@@ -21,6 +21,9 @@ dependencies:
   # Networking
   dio: ^5.8.0+1
 
+  # Navigation
+  go_router: ^15.0.0
+
   # Logging
   loggy: ^2.0.3
   flutter_loggy: ^2.0.3+1
