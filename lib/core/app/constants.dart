@@ -2,5 +2,5 @@ class Constants {
   Constants._();
 
   // URLs
-  static const String baseApiUrl = 'https://summitparts.com';
+  static const String baseApiUrl = 'https://summitparts-api.onrender.com/api';
 }
