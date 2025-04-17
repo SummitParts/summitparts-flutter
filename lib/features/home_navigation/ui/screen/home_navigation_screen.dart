@@ -27,7 +27,12 @@ class HomeNavigationScreen extends ConsumerWidget {
             },
             items:
                 FeatureTab.values
-                    .map((featureTab) => BottomNavigationBarItem(icon: Icon(featureTab.icon), label: featureTab.label))
+                    .map(
+                      (featureTab) => BottomNavigationBarItem(
+                        icon: Icon(featureTab.icon),
+                        label: featureTab.label,
+                      ),
+                    )
                     .toList(),
           ),
         ),
