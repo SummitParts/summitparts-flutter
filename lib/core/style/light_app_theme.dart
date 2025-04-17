@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:summit_parts/core/app/constants.dart';
 import 'package:summit_parts/core/style/app_theme.dart';
+import 'package:summit_parts/gen/fonts.gen.dart';
 
 final ThemeData lightTheme = _LightAppTheme().theme();
 
@@ -15,6 +15,6 @@ class _LightAppTheme extends AppTheme {
       onSurface: const Color(0xFF171717),
     );
 
-    return ThemeData(fontFamily: Constants.poppinsFontFamily, brightness: Brightness.light, colorScheme: colorScheme);
+    return ThemeData(fontFamily: FontFamily.poppins, brightness: Brightness.light, colorScheme: colorScheme);
   }
 }

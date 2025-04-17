@@ -51,6 +51,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
+  assets:
+    - assets/images/
+
   fonts:
     - family: Poppins
       fonts:
@@ -64,3 +67,6 @@ melos:
     generate:
       desc: Generate code for the project
       run: dart run build_runner build --delete-conflicting-outputs
+    generate-assets:
+      desc: Generate code for assets
+      run: fluttergen
