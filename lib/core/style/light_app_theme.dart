@@ -11,6 +11,7 @@ class _LightAppTheme extends AppTheme {
     final colorScheme = ColorScheme.fromSeed(
       brightness: Brightness.light,
       seedColor: const Color(0xFF0C71C3),
+      primary: const Color(0xFF0C71C3),
       surface: const Color(0xFFF8F8F8),
       onSurface: const Color(0xFF171717),
     );
