@@ -16,6 +16,11 @@ class _LightAppTheme extends AppTheme {
       onSurface: const Color(0xFF171717),
     );
 
-    return ThemeData(fontFamily: FontFamily.poppins, brightness: Brightness.light, colorScheme: colorScheme);
+    return ThemeData(
+      fontFamily: FontFamily.poppins,
+      brightness: Brightness.light,
+      colorScheme: colorScheme,
+      appBarTheme: AppBarTheme(centerTitle: false),
+    );
   }
 }
