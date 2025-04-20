@@ -11,4 +11,3 @@ Brand _$BrandFromJson(Map<String, dynamic> json) => Brand(
   name: json['name'] as String,
   imageUrl: json['image_url'] as String,
 );
-
