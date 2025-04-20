@@ -18,7 +18,36 @@ class BrandsDataProvider {
   }
 
   Future<List<Brand>> getFeaturedBrands() async {
-    final response = await _dio.get('/v1/brands?filter=featured');
-    return (response.data as List).map<Brand>((e) => Brand.fromJson(e)).toList();
+    await Future.delayed(Duration(seconds: 3));
+    return [
+      Brand(
+        id: 1,
+        name: 'WHIRLPOOL',
+        imageUrl: 'https://www.summitparts.com/wp-content/uploads/2021/05/Shop-Whirlpool-parts-1.jpg',
+      ),
+      Brand(id: 2, name: 'LG', imageUrl: 'https://www.summitparts.com/wp-content/uploads/2021/05/Shop-LG-parts.png'),
+      Brand(
+        id: 3,
+        name: 'MAYTAG',
+        imageUrl: 'https://www.summitparts.com/wp-content/uploads/2021/05/Shop-Maytag-parts.jpg',
+      ),
+      Brand(
+        id: 4,
+        name: 'DEXTER',
+        imageUrl: 'https://www.summitparts.com/wp-content/uploads/2021/05/Shop-Dexter-parts.jpg',
+      ),
+      Brand(
+        id: 5,
+        name: 'WASCOMAT',
+        imageUrl: 'https://www.summitparts.com/wp-content/uploads/2021/05/wascomat-logo.jpeg',
+      ),
+      Brand(
+        id: 6,
+        name: 'GIRBAU',
+        imageUrl: 'https://www.summitparts.com/wp-content/uploads/2021/05/Shop-Girbau-parts.jpg',
+      ),
+    ];
+    // final response = await _dio.get('/v1/brands?filter=featured');
+    // return (response.data as List).map<Brand>((e) => Brand.fromJson(e)).toList();
   }
 }
