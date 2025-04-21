@@ -90,7 +90,10 @@ class HomeScreen extends ConsumerWidget {
                     return SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       padding: EdgeInsets.symmetric(horizontal: 16),
-                      child: Row(spacing: 16, children: parts.map((part) => PartWidget(part: part)).toList()),
+                      child: Row(
+                        spacing: 16,
+                        children: parts.map((part) => PartWidget(part: part, onTap: () {})).toList(),
+                      ),
                     );
                   },
                   error: (error, _) => GenericError(exception: error),
@@ -131,7 +134,10 @@ class HomeScreen extends ConsumerWidget {
                     return SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       padding: EdgeInsets.symmetric(horizontal: 16),
-                      child: Row(spacing: 16, children: brands.map((brand) => BrandWidget(brand: brand)).toList()),
+                      child: Row(
+                        spacing: 16,
+                        children: brands.map((brand) => BrandWidget(brand: brand, onTap: () {})).toList(),
+                      ),
                     );
                   },
                   error: (error, _) => GenericError(exception: error),

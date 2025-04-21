@@ -26,8 +26,8 @@ class HorizontalListLoadingWidget extends StatelessWidget {
                     spacing: 8,
                     children: [
                       Container(
-                        width: MediaQuery.sizeOf(context).width / 2.5,
-                        height: MediaQuery.sizeOf(context).width / 2.5,
+                        width: MediaQuery.sizeOf(context).width / 2.6,
+                        height: MediaQuery.sizeOf(context).width / 2.6,
                         decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(8)),
                       ),
                       Stack(children: [Container(color: Colors.grey, child: Text('Title is here'))]),
