@@ -57,30 +57,33 @@ class HomeScreen extends ConsumerWidget {
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('TOP LAUNDRY PARTS CATEGORIES', style: TextStyle(fontWeight: FontWeight.w600)),
-                  SizedBox(
-                    height: 20,
-                    child: TextButton.icon(
-                      onPressed: () {},
-                      label: Text('See all'),
-                      icon: Icon(FontAwesomeIcons.chevronRight),
-                      style: TextButton.styleFrom(
-                        iconAlignment: IconAlignment.end,
-                        iconSize: 10,
-                        textStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-                        padding: EdgeInsets.symmetric(horizontal: 4),
-                        visualDensity: VisualDensity.compact,
-                        fixedSize: Size.fromHeight(16),
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            GestureDetector(
+              onTap: () {},
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('TOP LAUNDRY PARTS CATEGORIES', style: TextStyle(fontWeight: FontWeight.w600)),
+                    SizedBox(
+                      height: 20,
+                      child: TextButton.icon(
+                        onPressed: () {},
+                        label: Text('See all'),
+                        icon: Icon(FontAwesomeIcons.chevronRight),
+                        style: TextButton.styleFrom(
+                          iconAlignment: IconAlignment.end,
+                          iconSize: 10,
+                          textStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+                          padding: EdgeInsets.symmetric(horizontal: 4),
+                          visualDensity: VisualDensity.compact,
+                          fixedSize: Size.fromHeight(16),
+                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             ref
@@ -100,31 +103,34 @@ class HomeScreen extends ConsumerWidget {
                   loading: () => HorizontalListLoadingWidget(),
                 ),
             SizedBox(height: 8),
-            Divider(),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('POPULAR LAUNDRY PART BRANDS', style: TextStyle(fontWeight: FontWeight.w600)),
-                  SizedBox(
-                    height: 20,
-                    child: TextButton.icon(
-                      onPressed: () {},
-                      label: Text('See all'),
-                      icon: Icon(FontAwesomeIcons.chevronRight),
-                      style: TextButton.styleFrom(
-                        iconAlignment: IconAlignment.end,
-                        iconSize: 10,
-                        textStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-                        padding: EdgeInsets.symmetric(horizontal: 4),
-                        visualDensity: VisualDensity.compact,
-                        fixedSize: Size.fromHeight(16),
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            Divider(height: 1),
+            GestureDetector(
+              onTap: () {},
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('POPULAR LAUNDRY PART BRANDS', style: TextStyle(fontWeight: FontWeight.w600)),
+                    SizedBox(
+                      height: 20,
+                      child: TextButton.icon(
+                        onPressed: () {},
+                        label: Text('See all'),
+                        icon: Icon(FontAwesomeIcons.chevronRight),
+                        style: TextButton.styleFrom(
+                          iconAlignment: IconAlignment.end,
+                          iconSize: 10,
+                          textStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+                          padding: EdgeInsets.symmetric(horizontal: 4),
+                          visualDensity: VisualDensity.compact,
+                          fixedSize: Size.fromHeight(16),
+                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             ref

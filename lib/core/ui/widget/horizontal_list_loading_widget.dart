@@ -31,6 +31,7 @@ class HorizontalListLoadingWidget extends StatelessWidget {
                         decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(8)),
                       ),
                       Stack(children: [Container(color: Colors.grey, child: Text('Title is here'))]),
+                      SizedBox(height: 4),
                     ],
                   ),
                 ],
