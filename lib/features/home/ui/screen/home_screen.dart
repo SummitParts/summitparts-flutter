@@ -152,11 +152,11 @@ class HomeScreen extends ConsumerWidget {
                                     brand: brand,
                                     onTap: () {
                                       final mockItem = Item(
-                                        id: 1,
+                                        id: 'NBAGLG-210',
                                         name: 'PREMIUM LARGE NYLON LAUNDRY BAGS, 30" X 40", ASSORTED, DOZEN',
                                         imageUrl: 'https://www.summitparts.com/shop/catalog/items/NBAGLGB.jpg',
-                                        forBrand: 'DEXTER',
-                                        price: 99.99,
+                                        forBrand: 'BAGS',
+                                        price: 37.99,
                                         description:
                                             '''Premium Highest Strength Grade Large Nylon Laundry Bags with Drawstring Cord Lock Closure. Sold by the dozen, Assorted Colors.
 Colors: red, blue, navy, green, yellow, black.

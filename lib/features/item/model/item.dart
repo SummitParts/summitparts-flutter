@@ -14,7 +14,7 @@ class Item extends Equatable {
     required this.description,
   });
 
-  final int id;
+  final String id;
   final String name;
   final String imageUrl;
   final String? forBrand;
