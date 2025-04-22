@@ -15,6 +15,7 @@ class ItemScreen extends StatelessWidget {
           SliverAppBar(
             expandedHeight: MediaQuery.sizeOf(context).height / 4,
             pinned: true,
+            stretch: true,
             backgroundColor: Theme.of(context).colorScheme.primary,
             foregroundColor: Theme.of(context).colorScheme.onPrimary,
             flexibleSpace: FlexibleSpaceBar(
@@ -29,17 +30,24 @@ class ItemScreen extends StatelessWidget {
               ),
             ),
           ),
+          PinnedHeaderSliver(
+            child: Container(
+              color: Theme.of(context).colorScheme.surface,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                child: Text(
+                  item.name,
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w500),
+                ),
+              ),
+            ),
+          ),
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    item.name,
-                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(height: 8),
                   Text(
                     'Item Number: ${item.id}',
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w500),
