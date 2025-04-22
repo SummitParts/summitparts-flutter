@@ -93,19 +93,24 @@ class BrandsListScreen extends ConsumerWidget {
                   },
                 ),
               ),
-              _ => SliverGrid(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 0.8,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                ),
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    return Shimmer.fromColors(
-                      baseColor: Theme.of(context).colorScheme.outlineVariant,
-                      highlightColor: Theme.of(context).colorScheme.outlineVariant.withAlpha(128),
-                      child: Column(
+              _ => SliverToBoxAdapter(
+                child: Shimmer.fromColors(
+                  baseColor: Theme.of(context).colorScheme.outlineVariant,
+                  highlightColor: Theme.of(context).colorScheme.outlineVariant.withAlpha(128),
+                  child: GridView.builder(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.8,
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
+                    ),
+                    itemCount: 4,
+                    // Show 6 loading items
+                    itemBuilder: (context, index) {
+                      return Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -118,10 +123,9 @@ class BrandsListScreen extends ConsumerWidget {
                           Container(width: 80, height: 16, color: Colors.grey),
                           const SizedBox(height: 4),
                         ],
-                      ),
-                    );
-                  },
-                  childCount: 6, // Show 6 loading items
+                      );
+                    },
+                  ),
                 ),
               ),
             },
