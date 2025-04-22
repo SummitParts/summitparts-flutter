@@ -24,7 +24,7 @@ class PartWidget extends StatelessWidget {
                 (context, error, _) => SizedBox(
                   width: MediaQuery.sizeOf(context).width / 2.6,
                   height: MediaQuery.sizeOf(context).width / 2.6,
-                  child: Icon(FontAwesomeIcons.image),
+                  child: Icon(FontAwesomeIcons.image, size: 80),
                 ),
           ),
           Text(part.name, style: TextStyle(fontWeight: FontWeight.w600)),
