@@ -8,9 +8,14 @@ final routerProvider = Provider<GoRouter>((_) {
   return GoRouter(
     initialLocation: HomeNavigationScreen.path,
     routes: [
-      GoRoute(path: HomeNavigationScreen.path, builder: (context, state) => const HomeNavigationScreen()),
-      GoRoute(path: BrandsListScreen.path, builder: (context, state) => const BrandsListScreen()),
-      GoRoute(path: PartsListScreen.path, builder: (context, state) => const PartsListScreen()),
+      GoRoute(
+        path: HomeNavigationScreen.path,
+        builder: (context, state) => const HomeNavigationScreen(),
+        routes: [
+          GoRoute(path: BrandsListScreen.path, builder: (context, state) => const BrandsListScreen()),
+          GoRoute(path: PartsListScreen.path, builder: (context, state) => const PartsListScreen()),
+        ],
+      ),
     ],
   );
 });

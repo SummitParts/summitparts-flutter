@@ -59,7 +59,7 @@ class HomeScreen extends ConsumerWidget {
               ],
             ),
             InkWell(
-              onTap: () => context.push(PartsListScreen.path),
+              onTap: () => context.go(PartsListScreen.path),
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
                 child: Row(
@@ -69,7 +69,7 @@ class HomeScreen extends ConsumerWidget {
                     SizedBox(
                       height: 20,
                       child: TextButton.icon(
-                        onPressed: () => context.push(PartsListScreen.path),
+                        onPressed: () => context.go(PartsListScreen.path),
                         label: Text('See all'),
                         icon: Icon(FontAwesomeIcons.chevronRight),
                         style: TextButton.styleFrom(
@@ -106,7 +106,7 @@ class HomeScreen extends ConsumerWidget {
             SizedBox(height: 8),
             Divider(height: 1),
             InkWell(
-              onTap: () => context.push(BrandsListScreen.path),
+              onTap: () => context.go(BrandsListScreen.path),
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
                 child: Row(
@@ -116,7 +116,7 @@ class HomeScreen extends ConsumerWidget {
                     SizedBox(
                       height: 20,
                       child: TextButton.icon(
-                        onPressed: () => context.push(BrandsListScreen.path),
+                        onPressed: () => context.go(BrandsListScreen.path),
                         label: Text('See all'),
                         icon: Icon(FontAwesomeIcons.chevronRight),
                         style: TextButton.styleFrom(
