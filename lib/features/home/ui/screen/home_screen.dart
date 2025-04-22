@@ -8,7 +8,7 @@ import 'package:summit_parts/features/brand/logic/brands_provider.dart';
 import 'package:summit_parts/features/brand/ui/screen/brands_list_screen.dart';
 import 'package:summit_parts/features/brand/ui/widget/brand_widget.dart';
 import 'package:summit_parts/features/part/logic/parts_provider.dart';
-import 'package:summit_parts/features/part/widget/part_widget.dart';
+import 'package:summit_parts/features/part/ui/widget/part_widget.dart';
 import 'package:summit_parts/gen/assets.gen.dart';
 
 class HomeScreen extends ConsumerWidget {
