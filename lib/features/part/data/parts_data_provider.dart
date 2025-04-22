@@ -13,7 +13,7 @@ class PartsDataProvider {
   final Dio _dio;
 
   Future<List<Part>> getAllParts() async {
-    return getAllParts();
+    return getFeaturedParts();
     final response = await _dio.get('/v1/parts');
     return (response.data as List).map<Part>((e) => Part.fromJson(e)).toList();
   }
