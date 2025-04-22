@@ -69,7 +69,7 @@ class HomeScreen extends ConsumerWidget {
                     SizedBox(
                       height: 20,
                       child: TextButton.icon(
-                        onPressed: () {},
+                        onPressed: () => context.push(PartsListScreen.path),
                         label: Text('See all'),
                         icon: Icon(FontAwesomeIcons.chevronRight),
                         style: TextButton.styleFrom(
@@ -116,7 +116,7 @@ class HomeScreen extends ConsumerWidget {
                     SizedBox(
                       height: 20,
                       child: TextButton.icon(
-                        onPressed: () {},
+                        onPressed: () => context.push(BrandsListScreen.path),
                         label: Text('See all'),
                         icon: Icon(FontAwesomeIcons.chevronRight),
                         style: TextButton.styleFrom(
