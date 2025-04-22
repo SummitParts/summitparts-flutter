@@ -19,8 +19,6 @@ class HorizontalListLoadingWidget extends StatelessWidget {
           children: [
             for (int i = 0; i < 3; i++)
               Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
                 children: [
                   Column(
                     spacing: 8,
