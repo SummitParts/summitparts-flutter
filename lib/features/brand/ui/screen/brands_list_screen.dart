@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:summit_parts/core/ui/widget/generic_error.dart';
+import 'package:summit_parts/core/ui/widget/loading/grid_loading_widget.dart';
 import 'package:summit_parts/features/brand/logic/brands_provider.dart';
 import 'package:summit_parts/features/brand/ui/widget/brand_widget.dart';
 import 'package:summit_parts/gen/assets.gen.dart';
@@ -14,16 +14,11 @@ class BrandsListScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final brandsAsync = ref.watch(brandsProvider);
-    final bannerHeight = MediaQuery.sizeOf(context).height / 3;
-    final bannerText =
-        'Shop all the top-selling Laundry Machine Brands in the industry. Browse all the parts for your machine by brand. We offer the largest inventory from all of the popular laundry brands, from Alliance to Whirlpool, we have you covered!';
-
     return Scaffold(
       body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
-            expandedHeight: bannerHeight,
+            expandedHeight: MediaQuery.sizeOf(context).height / 3,
             pinned: true,
             stretch: true,
             backgroundColor: Theme.of(context).colorScheme.primary,
@@ -56,7 +51,7 @@ class BrandsListScreen extends ConsumerWidget {
                     left: 16,
                     right: 16,
                     child: Text(
-                      bannerText,
+                      'Shop all the top-selling Laundry Machine Brands in the industry. Browse all the parts for your machine by brand. We offer the largest inventory from all of the popular laundry brands, from Alliance to Whirlpool, we have you covered!',
                       style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 15),
                     ),
                   ),
@@ -76,58 +71,13 @@ class BrandsListScreen extends ConsumerWidget {
                 ),
                 delegate: SliverChildBuilderDelegate((context, index) {
                   final brand = brands[index];
-                  return BrandWidget(
-                    brand: brand,
-                    onTap: () {
-                      // TODO: Navigate to brand details or products
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Selected ${brand.name}')));
-                    },
-                  );
+                  return BrandWidget(brand: brand, onTap: () {});
                 }, childCount: brands.length),
               ),
               AsyncError(:final error, :final isLoading) when !isLoading => SliverToBoxAdapter(
-                child: GenericError(
-                  exception: error,
-                  onRetry: () {
-                    ref.invalidate(brandsProvider);
-                  },
-                ),
+                child: GenericError(exception: error, onRetry: () => ref.invalidate(brandsProvider)),
               ),
-              _ => SliverToBoxAdapter(
-                child: Shimmer.fromColors(
-                  baseColor: Theme.of(context).colorScheme.outlineVariant,
-                  highlightColor: Theme.of(context).colorScheme.outlineVariant.withAlpha(128),
-                  child: GridView.builder(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 0.8,
-                      crossAxisSpacing: 16,
-                      mainAxisSpacing: 16,
-                    ),
-                    itemCount: 4,
-                    // Show 6 loading items
-                    itemBuilder: (context, index) {
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: MediaQuery.sizeOf(context).width / 2.6,
-                            height: MediaQuery.sizeOf(context).width / 2.6,
-                            decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(8)),
-                          ),
-                          const SizedBox(height: 8),
-                          Container(width: 80, height: 16, color: Colors.grey),
-                          const SizedBox(height: 4),
-                        ],
-                      );
-                    },
-                  ),
-                ),
-              ),
+              _ => SliverToBoxAdapter(child: GridLoadingWidget()),
             },
           ),
           SliverToBoxAdapter(child: SizedBox(height: 24)),
