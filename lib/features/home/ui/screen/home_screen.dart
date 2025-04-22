@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:summit_parts/core/ui/widget/generic_error.dart';
 import 'package:summit_parts/core/ui/widget/horizontal_list_loading_widget.dart';
 import 'package:summit_parts/features/brand/logic/brands_provider.dart';
+import 'package:summit_parts/features/brand/ui/screen/brands_list_screen.dart';
 import 'package:summit_parts/features/brand/ui/widget/brand_widget.dart';
 import 'package:summit_parts/features/part/logic/parts_provider.dart';
 import 'package:summit_parts/features/part/widget/part_widget.dart';
@@ -11,8 +13,6 @@ import 'package:summit_parts/gen/assets.gen.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
-
-  static const String routeName = '/';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,7 +24,7 @@ class HomeScreen extends ConsumerWidget {
           children: [
             Stack(
               children: [
-                Assets.images.banner.image(),
+                Assets.images.banner.image(height: MediaQuery.sizeOf(context).height / 5, fit: BoxFit.cover),
                 Positioned.fill(
                   child: Container(
                     decoration: BoxDecoration(
@@ -57,7 +57,7 @@ class HomeScreen extends ConsumerWidget {
                 ),
               ],
             ),
-            GestureDetector(
+            InkWell(
               onTap: () {},
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
@@ -104,8 +104,8 @@ class HomeScreen extends ConsumerWidget {
                 ),
             SizedBox(height: 8),
             Divider(height: 1),
-            GestureDetector(
-              onTap: () {},
+            InkWell(
+              onTap: () => context.push(BrandsListScreen.path),
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
                 child: Row(
