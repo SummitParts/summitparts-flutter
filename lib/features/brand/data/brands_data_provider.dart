@@ -13,6 +13,7 @@ class BrandsDataProvider {
   final Dio _dio;
 
   Future<List<Brand>> getAllBrands() async {
+    return getFeaturedBrands();
     final response = await _dio.get('/v1/brands');
     return (response.data as List).map<Brand>((e) => Brand.fromJson(e)).toList();
   }
