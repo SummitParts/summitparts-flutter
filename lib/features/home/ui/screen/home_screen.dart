@@ -7,6 +7,8 @@ import 'package:summit_parts/core/ui/widget/loading/horizontal_list_loading_widg
 import 'package:summit_parts/features/brand/logic/brands_provider.dart';
 import 'package:summit_parts/features/brand/ui/screen/brands_list_screen.dart';
 import 'package:summit_parts/features/brand/ui/widget/brand_widget.dart';
+import 'package:summit_parts/features/item/model/item.dart';
+import 'package:summit_parts/features/item/ui/screen/item_screen.dart';
 import 'package:summit_parts/features/part/logic/parts_provider.dart';
 import 'package:summit_parts/features/part/ui/screen/parts_list_screen.dart';
 import 'package:summit_parts/features/part/ui/widget/part_widget.dart';
@@ -143,7 +145,38 @@ class HomeScreen extends ConsumerWidget {
                       padding: EdgeInsets.symmetric(horizontal: 16),
                       child: Row(
                         spacing: 16,
-                        children: brands.map((brand) => BrandWidget(brand: brand, onTap: () {})).toList(),
+                        children:
+                            brands
+                                .map(
+                                  (brand) => BrandWidget(
+                                    brand: brand,
+                                    onTap: () {
+                                      final mockItem = Item(
+                                        id: 1,
+                                        name: 'PREMIUM LARGE NYLON LAUNDRY BAGS, 30" X 40", ASSORTED, DOZEN',
+                                        imageUrl: 'https://www.summitparts.com/shop/catalog/items/NBAGLGB.jpg',
+                                        forBrand: 'DEXTER',
+                                        price: 99.99,
+                                        description:
+                                            '''Premium Highest Strength Grade Large Nylon Laundry Bags with Drawstring Cord Lock Closure. Sold by the dozen, Assorted Colors.
+Colors: red, blue, navy, green, yellow, black.
+Size: 30"x40" Fabric: nylon high density and extra thickness.
+Function: Can hold more than 50kgs. Extra special purpose: industrial, laundromat, pick up and delivery service.
+HIGH DENSITY AND EXTRA STRONG - Extra-tough double-seam construction and nylon material that prevents the bag tears from spreading; Plastic head at the end of the rope to make the drawstring not easy to unravel.
+ULTRA LARGE CAPACITY - Measure 30" x40" per piece; This size is big enoughfor holding 5~6 loads of laundry for each, storage in the college dorm or family use.
+EASY CLOSURE - A locking drawstring closure can prevent the spill of items and tie the knot after close can keep the clothes more safe and secure in the bag while carrying laundry.
+USES - Great choice for sleep away summer camp, kids can hold week period dirty clothes and take them back home, easily folded flat for future use. Multipurpose bags also can storage your bedding, towels, off season clothes, toys, blankets, pillows.
+QUALITY- strong double stitching, holds up well in the washer and dryer. Secure drawstring slider to close neatly without tying.
+CONVENIENT- Large enough to fit laundry hampers or baskets. Just pull out the laundrybag instead of carrying the whole hamper.
+PORTABLE- Take it to the laundromat, throw it down the stairs to the laundry room or use it to easily separate your dirty clothes while traveling.
+VERSATILE- These laundry bags can also be used as storage bags for comforters, blankets and stuffed animals, or keep some in the car to transport your kids sports gear.
+ATTRACTIVE- Nice and pretty with a large selection of rich beautiful colors. Different colors for each of your kid’s rooms will make identification easy.''',
+                                      );
+                                      context.push(ItemScreen.path, extra: mockItem);
+                                    },
+                                  ),
+                                )
+                                .toList(),
                       ),
                     );
                   },
