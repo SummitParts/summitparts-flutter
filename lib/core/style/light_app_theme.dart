@@ -20,7 +20,10 @@ class _LightAppTheme extends AppTheme {
       fontFamily: FontFamily.poppins,
       brightness: Brightness.light,
       colorScheme: colorScheme,
-      appBarTheme: AppBarTheme(centerTitle: false),
+      appBarTheme: AppBarTheme(
+        centerTitle: false,
+        titleTextStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+      ),
     );
   }
 }
