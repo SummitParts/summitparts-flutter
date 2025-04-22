@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:summit_parts/core/ui/widget/generic_error.dart';
-import 'package:summit_parts/core/ui/widget/horizontal_list_loading_widget.dart';
+import 'package:summit_parts/core/ui/widget/loading/horizontal_list_loading_widget.dart';
 import 'package:summit_parts/features/brand/logic/brands_provider.dart';
 import 'package:summit_parts/features/brand/ui/screen/brands_list_screen.dart';
 import 'package:summit_parts/features/brand/ui/widget/brand_widget.dart';
