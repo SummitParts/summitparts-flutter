@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:summit_parts/features/brand/model/brand.dart';
 
 class BrandWidget extends StatelessWidget {
@@ -24,7 +23,7 @@ class BrandWidget extends StatelessWidget {
                 (context, error, _) => SizedBox(
                   width: MediaQuery.sizeOf(context).width / 2.6,
                   height: MediaQuery.sizeOf(context).width / 2.6,
-                  child: Icon(FontAwesomeIcons.image, size: 80),
+                  child: Icon(Icons.image_not_supported, size: 80, color: Theme.of(context).colorScheme.outline),
                 ),
           ),
           Text(brand.name, style: TextStyle(fontWeight: FontWeight.w600)),
