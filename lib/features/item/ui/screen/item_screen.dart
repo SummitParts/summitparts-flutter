@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:summit_parts/features/item/model/item.dart';
 
 class ItemScreen extends StatelessWidget {
@@ -76,7 +77,7 @@ class ItemScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 8),
-                    Text(item.description!, style: Theme.of(context).textTheme.bodyMedium),
+                    HtmlWidget(item.description!),
                   ],
                 ],
               ),
