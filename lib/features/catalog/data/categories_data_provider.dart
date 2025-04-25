@@ -12,8 +12,11 @@ class CategoriesDataProvider {
 
   final Dio _dio;
 
-  Future<Catalog> getCatalog(String id) async {
-    final response = await _dio.get('/catalog/$id');
+  Future<Catalog> getCatalog(String id, {int page = 1, int limit = 10}) async {
+    final response = await _dio.get('/catalog/$id', queryParameters: {
+      'page': page,
+      'limit': limit,
+    });
     return Catalog.fromJson(response.data);
   }
 }
