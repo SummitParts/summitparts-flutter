@@ -2,12 +2,15 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
+import 'package:loggy/loggy.dart';
 import 'package:summit_parts/core/exception_handling/exceptions/app_exception.dart';
 
-class ErrorFormatter {
+class ErrorFormatter with UiLoggy {
   ErrorFormatter._();
 
   static String format(Exception exception) {
+    logDebug('Exception - $exception');
+
     if (exception is AppException) {
       return exception.message;
     }
