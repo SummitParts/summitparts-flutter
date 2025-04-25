@@ -17,7 +17,7 @@ class Products extends Equatable {
   List<Object?> get props => [items, meta];
 }
 
-@JsonSerializable(fieldRename: FieldRename.none)
+@JsonSerializable()
 class PaginationMeta extends Equatable {
   const PaginationMeta({
     required this.totalItems,
