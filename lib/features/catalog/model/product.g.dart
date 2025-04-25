@@ -1,0 +1,13 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'product.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+Product _$ProductFromJson(Map<String, dynamic> json) => Product(
+  id: json['id'] as String,
+  name: json['description'] as String,
+  imageUrl: _parseImageUrl(json['image'] as String),
+);
