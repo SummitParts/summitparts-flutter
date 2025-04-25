@@ -7,6 +7,10 @@ part of 'catalog.dart';
 // **************************************************************************
 
 Catalog _$CatalogFromJson(Map<String, dynamic> json) => Catalog(
+  id: json['id'] as String,
+  description: json['description'] as String,
+  longDescription: json['longDescription'] as String,
+  bannerImageUrl: _parseBannerImageUrl(json['banner'] as String),
   categories:
       (json['categories'] as List<dynamic>)
           .map((e) => Category.fromJson(e as Map<String, dynamic>))
