@@ -1,4 +1,4 @@
-package com.summitparts.summit_parts
+package com.summitparts.app
 
 import io.flutter.embedding.android.FlutterActivity
 
