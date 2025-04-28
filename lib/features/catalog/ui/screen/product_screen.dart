@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:summit_parts/features/catalog/model/product.dart';
 
-class ItemScreen extends StatelessWidget {
-  const ItemScreen({super.key, required this.product});
+class ProductScreen extends StatelessWidget {
+  const ProductScreen({super.key, required this.product});
 
   final Product product;
   static const String path = '/item';
