@@ -6,6 +6,7 @@ class ProductScreen extends StatelessWidget {
   const ProductScreen({super.key, required this.product});
 
   final Product product;
+
   static const String path = '/item';
 
   @override
