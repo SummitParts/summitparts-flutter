@@ -14,21 +14,58 @@ class ProductWidget extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(8),
       child: Column(
-        spacing: 4,
         children: [
-          CachedNetworkImage(
-            imageUrl: product.imageUrl,
-            width: MediaQuery.sizeOf(context).width / 2.6,
-            height: MediaQuery.sizeOf(context).width / 2.6,
-            errorWidget:
-                (context, url, error) => SizedBox(
-                  width: MediaQuery.sizeOf(context).width / 2.6,
-                  height: MediaQuery.sizeOf(context).width / 2.6,
-                  child: Icon(Icons.image_not_supported, size: 80, color: Theme.of(context).colorScheme.outline),
+          Expanded(
+            child: Stack(
+              children: [
+                Center(
+                  child: CachedNetworkImage(
+                    imageUrl: product.imageUrl,
+                    errorWidget:
+                        (context, url, error) => SizedBox(
+                          width: MediaQuery.sizeOf(context).width / 2.6,
+                          height: MediaQuery.sizeOf(context).width / 2.6,
+                          child: Icon(
+                            Icons.image_not_supported,
+                            size: 80,
+                            color: Theme.of(context).colorScheme.outline,
+                          ),
+                        ),
+                  ),
                 ),
+                if (true)
+                  Positioned(
+                    top: 8,
+                    left: 8,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primary,
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Text(
+                        '\$${product.price}',
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
           ),
+          SizedBox(height: 4),
           Text(product.id, style: TextStyle(fontWeight: FontWeight.w600), textAlign: TextAlign.center),
-          Text(product.name, style: TextStyle(), textAlign: TextAlign.center),
+          Text(
+            product.name,
+            style: TextStyle(),
+            textAlign: TextAlign.center,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
+          ),
+          SizedBox(height: 4),
         ],
       ),
     );

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:flutter/material.dart';
@@ -17,11 +19,9 @@ class ProductScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            expandedHeight: MediaQuery.sizeOf(context).height / 4,
+            expandedHeight: max(MediaQuery.sizeOf(context).height / 4, 232),
             pinned: true,
             stretch: true,
-            backgroundColor: Theme.of(context).colorScheme.primary,
-            foregroundColor: Theme.of(context).colorScheme.onPrimary,
             flexibleSpace: FlexibleSpaceBar(
               background: GestureDetector(
                 onTap: () {
@@ -32,7 +32,6 @@ class ProductScreen extends StatelessWidget {
                     closeButtonColor: Theme.of(context).colorScheme.onSurface,
                     useSafeArea: true,
                     doubleTapZoomable: true,
-                    swipeDismissible: true,
                   );
                 },
                 child: CachedNetworkImage(
