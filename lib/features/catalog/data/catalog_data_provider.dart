@@ -8,7 +8,7 @@ final catalogDataProvider = Provider.autoDispose<CatalogDataProvider>((ref) {
 });
 
 class CatalogDataProvider {
-  CatalogDataProvider(this._dio);
+  const CatalogDataProvider(this._dio);
 
   final Dio _dio;
 
