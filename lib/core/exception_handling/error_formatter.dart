@@ -8,8 +8,11 @@ import 'package:summit_parts/core/exception_handling/exceptions/app_exception.da
 class ErrorFormatter with UiLoggy {
   ErrorFormatter._();
 
-  static String format(Exception exception) {
+  static String format(Exception exception, [StackTrace? st]) {
     logDebug('Exception - $exception');
+    if (st != null) {
+      logDebug('Stack Trace - $st');
+    }
 
     if (exception is AppException) {
       return exception.message;
