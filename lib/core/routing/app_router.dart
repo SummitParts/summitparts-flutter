@@ -1,9 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:summit_parts/features/brand/ui/screen/brands_list_screen.dart';
+import 'package:summit_parts/features/catalog/model/product.dart';
+import 'package:summit_parts/features/catalog/ui/screen/catalog_screen.dart';
+import 'package:summit_parts/features/catalog/ui/screen/product_screen.dart';
 import 'package:summit_parts/features/home_navigation/ui/screen/home_navigation_screen.dart';
-import 'package:summit_parts/features/item/model/item.dart';
-import 'package:summit_parts/features/item/ui/screen/item_screen.dart';
-import 'package:summit_parts/features/part/ui/screen/parts_list_screen.dart';
+import 'package:summit_parts/features/search/ui/screen/search_screen.dart';
 
 final router = GoRouter(
   initialLocation: HomeNavigationScreen.path,
@@ -12,13 +13,26 @@ final router = GoRouter(
       path: HomeNavigationScreen.path,
       builder: (context, state) => const HomeNavigationScreen(),
       routes: [
-        GoRoute(path: BrandsListScreen.path, builder: (context, state) => const BrandsListScreen()),
-        GoRoute(path: PartsListScreen.path, builder: (context, state) => const PartsListScreen()),
         GoRoute(
-          path: ItemScreen.path,
-          builder: (context, state) {
-            final item = state.extra as Item;
-            return ItemScreen(item: item);
+          path: CatalogScreen.path,
+          builder: (context, state) => CatalogScreen(id: state.pathParameters['id'] as String),
+        ),
+        GoRoute(path: ProductScreen.path, builder: (context, state) => ProductScreen(product: state.extra as Product)),
+        GoRoute(
+          path: SearchScreen.path,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const SearchScreen(),
+              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                return FadeUpwardsPageTransitionsBuilder().buildTransitions(
+                  null,
+                  context,
+                  animation,
+                  secondaryAnimation,
+                  child,
+                );
+              },
+            );
           },
         ),
       ],
