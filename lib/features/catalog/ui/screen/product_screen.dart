@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
-import 'package:summit_parts/features/item/model/item.dart';
+import 'package:summit_parts/features/catalog/model/product.dart';
 
 class ItemScreen extends StatelessWidget {
-  const ItemScreen({super.key, required this.item});
+  const ItemScreen({super.key, required this.product});
 
-  final Item item;
+  final Product product;
   static const String path = '/item';
 
   @override
@@ -21,7 +21,7 @@ class ItemScreen extends StatelessWidget {
             foregroundColor: Theme.of(context).colorScheme.onPrimary,
             flexibleSpace: FlexibleSpaceBar(
               background: Image.network(
-                item.imageUrl,
+                product.imageUrl,
                 fit: BoxFit.cover,
                 errorBuilder:
                     (context, error, stackTrace) => Container(
@@ -37,7 +37,7 @@ class ItemScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
                 child: Text(
-                  item.name,
+                  product.name,
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w500),
                 ),
               ),
@@ -50,34 +50,34 @@ class ItemScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Item Number: ${item.id}',
+                    'Item Number: ${product.id}',
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 8),
-                  if (item.forBrand != null) ...[
-                    Text(
-                      'For ${item.forBrand}',
-                      style: Theme.of(
-                        context,
-                      ).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.outline),
-                    ),
-                    const SizedBox(height: 8),
-                  ],
+                  // if (product.forBrand != null) ...[
+                  //   Text(
+                  //     'For ${product.forBrand}',
+                  //     style: Theme.of(
+                  //       context,
+                  //     ).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.outline),
+                  //   ),
+                  //   const SizedBox(height: 8),
+                  // ],
                   Text(
-                    '\$${item.price.toStringAsFixed(2)}',
+                    '\$${product.price.toStringAsFixed(2)}',
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   const SizedBox(height: 16),
-                  if (item.description != null) ...[
+                  if (product.longDescription.isNotEmpty) ...[
                     Text(
                       'Description',
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 8),
-                    HtmlWidget(item.description!),
+                    HtmlWidget(product.longDescription),
                   ],
                 ],
               ),
