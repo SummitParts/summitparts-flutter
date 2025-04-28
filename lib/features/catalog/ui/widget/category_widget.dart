@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:summit_parts/features/catalog/model/category.dart';
 
@@ -13,14 +14,14 @@ class CategoryWidget extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(8),
       child: Column(
-        spacing: 8,
+        spacing: 4,
         children: [
-          Image.network(
-            category.imageUrl,
+          CachedNetworkImage(
+            imageUrl: category.imageUrl,
             width: MediaQuery.sizeOf(context).width / 2.6,
             height: MediaQuery.sizeOf(context).width / 2.6,
-            errorBuilder:
-                (context, error, _) => SizedBox(
+            errorWidget:
+                (context, url, error) => SizedBox(
                   width: MediaQuery.sizeOf(context).width / 2.6,
                   height: MediaQuery.sizeOf(context).width / 2.6,
                   child: Icon(Icons.image_not_supported, size: 80, color: Theme.of(context).colorScheme.outline),

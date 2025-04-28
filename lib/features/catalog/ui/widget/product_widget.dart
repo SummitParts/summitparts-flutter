@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:summit_parts/features/catalog/model/product.dart';
 
@@ -15,12 +16,12 @@ class ProductWidget extends StatelessWidget {
       child: Column(
         spacing: 4,
         children: [
-          Image.network(
-            product.imageUrl,
+          CachedNetworkImage(
+            imageUrl: product.imageUrl,
             width: MediaQuery.sizeOf(context).width / 2.6,
             height: MediaQuery.sizeOf(context).width / 2.6,
-            errorBuilder:
-                (context, error, _) => SizedBox(
+            errorWidget:
+                (context, url, error) => SizedBox(
                   width: MediaQuery.sizeOf(context).width / 2.6,
                   height: MediaQuery.sizeOf(context).width / 2.6,
                   child: Icon(Icons.image_not_supported, size: 80, color: Theme.of(context).colorScheme.outline),
@@ -28,7 +29,6 @@ class ProductWidget extends StatelessWidget {
           ),
           Text(product.id, style: TextStyle(fontWeight: FontWeight.w600), textAlign: TextAlign.center),
           Text(product.name, style: TextStyle(), textAlign: TextAlign.center),
-          // SizedBox(height: 4),
         ],
       ),
     );
