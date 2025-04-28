@@ -15,17 +15,11 @@ class $AssetsImagesGen {
   /// File path: assets/images/banner.jpg
   AssetGenImage get banner => const AssetGenImage('assets/images/banner.jpg');
 
-  /// File path: assets/images/brands_banner.jpg
-  AssetGenImage get brandsBanner => const AssetGenImage('assets/images/brands_banner.jpg');
-
-  /// File path: assets/images/laundry_parts_banner.jpg
-  AssetGenImage get laundryPartsBanner => const AssetGenImage('assets/images/laundry_parts_banner.jpg');
-
   /// File path: assets/images/summit_logo.png
   AssetGenImage get summitLogo => const AssetGenImage('assets/images/summit_logo.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [banner, brandsBanner, laundryPartsBanner, summitLogo];
+  List<AssetGenImage> get values => [banner, summitLogo];
 }
 
 class Assets {
