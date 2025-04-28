@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:summit_parts/features/catalog/model/product.dart';
@@ -21,14 +23,27 @@ class ProductScreen extends StatelessWidget {
             backgroundColor: Theme.of(context).colorScheme.primary,
             foregroundColor: Theme.of(context).colorScheme.onPrimary,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.network(
-                product.imageUrl,
-                fit: BoxFit.cover,
-                errorBuilder:
-                    (context, error, stackTrace) => Container(
-                      color: Theme.of(context).colorScheme.outlineVariant,
-                      child: Icon(Icons.image_not_supported, size: 80, color: Theme.of(context).colorScheme.outline),
-                    ),
+              background: GestureDetector(
+                onTap: () {
+                  showImageViewer(
+                    context,
+                    CachedNetworkImageProvider(product.imageUrl),
+                    backgroundColor: Theme.of(context).colorScheme.surface,
+                    closeButtonColor: Theme.of(context).colorScheme.onSurface,
+                    useSafeArea: true,
+                    doubleTapZoomable: true,
+                    swipeDismissible: true,
+                  );
+                },
+                child: CachedNetworkImage(
+                  imageUrl: product.imageUrl,
+                  fit: BoxFit.cover,
+                  errorWidget:
+                      (context, url, error) => Container(
+                        color: Theme.of(context).colorScheme.outlineVariant,
+                        child: Icon(Icons.image_not_supported, size: 80, color: Theme.of(context).colorScheme.outline),
+                      ),
+                ),
               ),
             ),
           ),
