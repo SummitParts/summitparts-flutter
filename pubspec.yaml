@@ -23,6 +23,7 @@ dependencies:
 
   # Networking
   dio: ^5.8.0+1
+  cached_network_image: ^3.4.1
 
   # Navigation
   go_router: ^15.1.1
