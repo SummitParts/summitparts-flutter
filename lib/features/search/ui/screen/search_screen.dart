@@ -54,6 +54,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 fillColor: Colors.white,
                 contentPadding: EdgeInsets.symmetric(vertical: 0),
               ),
+              autocorrect: false,
+              keyboardType: TextInputType.webSearch,
               onTapOutside: (_) => FocusScope.of(context).unfocus(),
               autofocus: true,
               textInputAction: TextInputAction.search,
