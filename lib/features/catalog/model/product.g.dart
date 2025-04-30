@@ -12,5 +12,5 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
   longDescription: json['longDescription'] as String,
   imageUrl: _parseImageUrl(json['image'] as String),
   price: (json['price'] as num).toDouble(),
-  productLine: json['productLine'] as String,
+  productLine: json['productLine'] as String?,
 );

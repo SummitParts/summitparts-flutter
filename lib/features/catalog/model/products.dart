@@ -33,6 +33,10 @@ class PaginationMeta extends Equatable {
   final int totalPages;
   final int currentPage;
 
+  factory PaginationMeta.empty() {
+    return PaginationMeta(totalItems: 0, itemCount: 0, itemsPerPage: 0, totalPages: 0, currentPage: 0);
+  }
+
   factory PaginationMeta.fromJson(Map<String, dynamic> json) => _$PaginationMetaFromJson(json);
 
   @override

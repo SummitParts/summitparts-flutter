@@ -21,7 +21,7 @@ class Product extends Equatable {
   @JsonKey(name: 'image', fromJson: _parseImageUrl)
   final String imageUrl;
   final double price;
-  final String productLine;
+  final String? productLine;
 
   factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
 

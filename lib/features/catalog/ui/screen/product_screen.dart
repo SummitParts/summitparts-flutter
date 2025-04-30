@@ -69,7 +69,7 @@ class ProductScreen extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 8),
-                  if (product.productLine.isNotEmpty) ...[
+                  if (product.productLine != null && product.productLine!.isNotEmpty) ...[
                     Text(
                       'For ${product.productLine}',
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
