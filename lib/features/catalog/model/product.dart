@@ -11,6 +11,7 @@ class Product extends Equatable {
     required this.longDescription,
     required this.imageUrl,
     required this.price,
+    required this.productLine,
   });
 
   final String id;
@@ -20,11 +21,12 @@ class Product extends Equatable {
   @JsonKey(name: 'image', fromJson: _parseImageUrl)
   final String imageUrl;
   final double price;
+  final String productLine;
 
   factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
 
   @override
-  List<Object?> get props => [id, name, longDescription, imageUrl, price];
+  List<Object?> get props => [id, name, longDescription, imageUrl, price, productLine];
 }
 
 String _parseImageUrl(String imageName) {

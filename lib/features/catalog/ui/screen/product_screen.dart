@@ -69,15 +69,16 @@ class ProductScreen extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w500),
                   ),
                   const SizedBox(height: 8),
-                  // if (product.forBrand != null) ...[
-                  //   Text(
-                  //     'For ${product.forBrand}',
-                  //     style: Theme.of(
-                  //       context,
-                  //     ).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.outline),
-                  //   ),
-                  //   const SizedBox(height: 8),
-                  // ],
+                  if (product.productLine.isNotEmpty) ...[
+                    Text(
+                      'For ${product.productLine}',
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        color: Theme.of(context).colorScheme.outline,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                  ],
                   Text(
                     '\$${product.price.toStringAsFixed(2)}',
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
