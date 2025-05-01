@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:summit_parts/core/ui/widget/html_widget_with_url_launcher.dart';
 import 'package:summit_parts/features/catalog/model/product.dart';
 
 class ProductScreen extends StatelessWidget {
@@ -93,10 +93,10 @@ class ProductScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 8),
-                    HtmlWidget(product.longDescription),
+                    HtmlWidgetWithUrlLauncher(product.longDescription),
                     Divider(height: 32),
                   ],
-                  HtmlWidget(
+                  HtmlWidgetWithUrlLauncher(
                     '<p class="card-text text-muted">Buy commercial and domestic replacement laundry parts, and washer/dryer original OEM parts, here at Summit Parts. We carry the largest selection and lowest priced laundry parts for all major brands including: <a href="https://summitparts.com/catalog/alliance/">Alliance laundry parts</a>, <a href="https://summitparts.com/catalog/american_dryer">ADC parts</a>, <a href="https://summitparts.com/catalog/huebsch/">Huebsch</a>, <a href="https://summitparts.com/catalog/dexter/">Dexter</a>, <a href="https://summitparts.com/catalog/maytag/">Maytag</a>, <a href="https://summitparts.com/catalog/speed_queen/">Speed Queen parts</a>, <a href="https://summitparts.com/catalog/wascomat/">Wascomat</a>, and <a href="https://summitparts.com/catalog/whirlpool/">Whirlpool</a> laundry parts. Our popular products include; <a href="https://summitparts.com/catalog/belts/">Belts</a>, <a href="https://summitparts.com/catalog/drain_valves/">Drain Valves</a>, <a href="https://summitparts.com/catalog/all_hoses/">Hoses</a>, <a href="https://summitparts.com/catalog/all_ignitors/">Ignitor Boxes</a>, <a href="https://summitparts.com/catalog/laundry_carts_&amp;_wheels/">Laundry Carts</a>, <a href="https://summitparts.com/catalog/all_lint_screens/">Lint Screens</a>, <a href="https://summitparts.com/catalog/all_rollers/">Rollers</a>, and <a href="https://summitparts.com/catalog/all_water_valves/">Water Valves</a>. Learn more about our Free Shipping, and when you join Summit Bucks earn 3% back on every purchase.<br><br><a href="https://summitparts.com/catalog/specials/">Shop and save on all Laundry Parts Specials now</a>.</p>',
                   ),
                 ],
