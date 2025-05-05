@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:summit_parts/features/auth/logic/user_provider.dart';
 import 'package:summit_parts/features/home_navigation/logic/current_screen_provider.dart';
 import 'package:summit_parts/features/home_navigation/model/feature_tab.dart';
 
@@ -27,12 +28,7 @@ class HomeNavigationScreen extends ConsumerWidget {
             },
             items:
                 FeatureTab.values
-                    .map(
-                      (featureTab) => BottomNavigationBarItem(
-                        icon: Icon(featureTab.icon),
-                        label: featureTab.label,
-                      ),
-                    )
+                    .map((featureTab) => BottomNavigationBarItem(icon: Icon(featureTab.icon), label: featureTab.label))
                     .toList(),
           ),
         ),
@@ -48,6 +44,7 @@ class _EagerInitialization extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(userNotifierProvider);
     return child;
   }
 }
