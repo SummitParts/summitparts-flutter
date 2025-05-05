@@ -15,7 +15,7 @@ class UserScreen extends ConsumerWidget {
             ? AuthScreen()
             : Scaffold(
               appBar: AppBar(
-                title: const Text('User Login'),
+                title: const Text('Account'),
                 backgroundColor: Theme.of(context).colorScheme.primary,
                 foregroundColor: Theme.of(context).colorScheme.onPrimary,
               ),
