@@ -37,22 +37,22 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Search Catalog'),
+        title: const Text('Search Catalog'),
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Theme.of(context).colorScheme.onPrimary,
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(60),
+          preferredSize: const Size.fromHeight(60),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
             child: TextField(
               controller: _searchQueryController,
               decoration: InputDecoration(
                 hintText: 'Search for parts...',
-                prefixIcon: Icon(FontAwesomeIcons.magnifyingGlass),
+                prefixIcon: const Icon(FontAwesomeIcons.magnifyingGlass),
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
                 filled: true,
                 fillColor: Colors.white,
-                contentPadding: EdgeInsets.symmetric(vertical: 0),
+                contentPadding: const EdgeInsets.symmetric(vertical: 0),
               ),
               autocorrect: false,
               keyboardType: TextInputType.webSearch,
@@ -78,7 +78,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(FontAwesomeIcons.magnifyingGlass, size: 64, color: Theme.of(context).colorScheme.outline),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   Text(
                     'Search for parts',
                     style: Theme.of(
@@ -115,7 +115,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           );
         },
         error: (error, st) => GenericError(exception: error),
-        loading: () => Padding(padding: const EdgeInsets.symmetric(vertical: 16), child: GridLoadingWidget()),
+        loading: () => const Padding(padding: EdgeInsets.symmetric(vertical: 16), child: GridLoadingWidget()),
       ),
     );
   }

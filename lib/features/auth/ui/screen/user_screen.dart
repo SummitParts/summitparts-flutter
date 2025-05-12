@@ -12,7 +12,7 @@ class UserScreen extends ConsumerWidget {
     return userAsync.maybeWhen(
       data: (user) {
         return user == null
-            ? AuthScreen()
+            ? const AuthScreen()
             : Scaffold(
               appBar: AppBar(
                 title: const Text('Account'),
@@ -23,19 +23,19 @@ class UserScreen extends ConsumerWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('User Logged In'),
+                    const Text('User Logged In'),
                     TextButton(
                       onPressed: () {
                         ref.read(userNotifierProvider.notifier).signOut();
                       },
-                      child: Text('Logout'),
+                      child: const Text('Logout'),
                     ),
                   ],
                 ),
               ),
             );
       },
-      orElse: () => Scaffold(body: Center(child: CircularProgressIndicator.adaptive())),
+      orElse: () => const Scaffold(body: Center(child: CircularProgressIndicator.adaptive())),
     );
   }
 }

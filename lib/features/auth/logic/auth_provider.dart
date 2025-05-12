@@ -19,7 +19,7 @@ class AuthNotifier extends AutoDisposeAsyncNotifier<SignInResponse?> {
   Future<SignInResponse?> build() async => null;
 
   Future<void> signIn(String email, String password) async {
-    state = AsyncValue.loading();
+    state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
       final signInResponse = await _authDataProvider.signIn(email: email, password: password);
       _inMemoryStorageDataProvider.put(key: StorageConstants.accessTokenKey, value: signInResponse.accessToken);

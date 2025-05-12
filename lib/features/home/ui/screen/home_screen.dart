@@ -20,16 +20,16 @@ class HomeScreen extends ConsumerWidget {
         actions: [
           IconButton(
             onPressed: () => context.push(SearchScreen.path),
-            icon: Icon(FontAwesomeIcons.magnifyingGlass),
+            icon: const Icon(FontAwesomeIcons.magnifyingGlass),
             style: IconButton.styleFrom(
               backgroundColor: Theme.of(context).colorScheme.outlineVariant.withAlpha(100),
               iconSize: 20,
             ),
           ),
-          SizedBox(width: 2),
+          const SizedBox(width: 2),
           IconButton(
             onPressed: () {},
-            icon: Icon(FontAwesomeIcons.cartShopping),
+            icon: const Icon(FontAwesomeIcons.cartShopping),
             style: IconButton.styleFrom(
               backgroundColor: Theme.of(context).colorScheme.outlineVariant.withAlpha(100),
               iconSize: 20,
@@ -46,17 +46,17 @@ class HomeScreen extends ConsumerWidget {
                 Assets.images.banner.image(height: MediaQuery.sizeOf(context).height / 5, fit: BoxFit.cover),
                 Positioned.fill(
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         colors: [Colors.black, Colors.transparent],
                         begin: Alignment.bottomCenter,
                         end: Alignment.topCenter,
-                        stops: const [0.1, 0.9],
+                        stops: [0.1, 0.9],
                       ),
                     ),
                   ),
                 ),
-                Positioned(
+                const Positioned(
                   bottom: 16,
                   left: 16,
                   right: 16,
@@ -83,20 +83,20 @@ class HomeScreen extends ConsumerWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('TOP LAUNDRY PARTS CATEGORIES', style: TextStyle(fontWeight: FontWeight.w600)),
+                    const Text('TOP LAUNDRY PARTS CATEGORIES', style: TextStyle(fontWeight: FontWeight.w600)),
                     SizedBox(
                       height: 20,
                       child: TextButton.icon(
                         onPressed: () => context.go('/catalog/laundry_parts'),
-                        label: Text('See all'),
-                        icon: Icon(FontAwesomeIcons.chevronRight),
+                        label: const Text('See all'),
+                        icon: const Icon(FontAwesomeIcons.chevronRight),
                         style: TextButton.styleFrom(
                           iconAlignment: IconAlignment.end,
                           iconSize: 10,
-                          textStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-                          padding: EdgeInsets.symmetric(horizontal: 4),
+                          textStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
                           visualDensity: VisualDensity.compact,
-                          fixedSize: Size.fromHeight(16),
+                          fixedSize: const Size.fromHeight(16),
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
                       ),
@@ -111,7 +111,7 @@ class HomeScreen extends ConsumerWidget {
                   data: (parts) {
                     return SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
-                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Row(
                         spacing: 16,
                         children:
@@ -125,10 +125,10 @@ class HomeScreen extends ConsumerWidget {
                     );
                   },
                   error: (error, _) => GenericError(exception: error),
-                  loading: () => HorizontalListLoadingWidget(),
+                  loading: () => const HorizontalListLoadingWidget(),
                 ),
-            SizedBox(height: 8),
-            Divider(height: 1),
+            const SizedBox(height: 8),
+            const Divider(height: 1),
             InkWell(
               onTap: () => context.go('/catalog/brands'),
               child: Padding(
@@ -136,20 +136,20 @@ class HomeScreen extends ConsumerWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('POPULAR LAUNDRY PART BRANDS', style: TextStyle(fontWeight: FontWeight.w600)),
+                    const Text('POPULAR LAUNDRY PART BRANDS', style: TextStyle(fontWeight: FontWeight.w600)),
                     SizedBox(
                       height: 20,
                       child: TextButton.icon(
                         onPressed: () => context.go('/catalog/brands'),
-                        label: Text('See all'),
-                        icon: Icon(FontAwesomeIcons.chevronRight),
+                        label: const Text('See all'),
+                        icon: const Icon(FontAwesomeIcons.chevronRight),
                         style: TextButton.styleFrom(
                           iconAlignment: IconAlignment.end,
                           iconSize: 10,
-                          textStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
-                          padding: EdgeInsets.symmetric(horizontal: 4),
+                          textStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
                           visualDensity: VisualDensity.compact,
-                          fixedSize: Size.fromHeight(16),
+                          fixedSize: const Size.fromHeight(16),
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
                       ),
@@ -164,7 +164,7 @@ class HomeScreen extends ConsumerWidget {
                   data: (brands) {
                     return SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
-                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Row(
                         spacing: 16,
                         children:
@@ -180,7 +180,7 @@ class HomeScreen extends ConsumerWidget {
                     );
                   },
                   error: (error, _) => GenericError(exception: error),
-                  loading: () => HorizontalListLoadingWidget(),
+                  loading: () => const HorizontalListLoadingWidget(),
                 ),
           ],
         ),

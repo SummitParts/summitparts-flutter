@@ -27,6 +27,6 @@ class UserNotifier extends AutoDisposeAsyncNotifier<SignInResponse?> {
     _secureStorageDataProvider.delete(key: StorageConstants.refreshTokenKey);
     _inMemoryStorageDataProvider.delete(key: StorageConstants.accessTokenKey);
     _inMemoryStorageDataProvider.delete(key: StorageConstants.refreshTokenKey);
-    state = AsyncData(null);
+    state = const AsyncData(null);
   }
 }

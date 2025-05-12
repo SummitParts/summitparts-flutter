@@ -24,7 +24,7 @@ final router = GoRouter(
             return CustomTransitionPage(
               child: const SearchScreen(),
               transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                return FadeUpwardsPageTransitionsBuilder().buildTransitions(
+                return const FadeUpwardsPageTransitionsBuilder().buildTransitions(
                   null,
                   context,
                   animation,

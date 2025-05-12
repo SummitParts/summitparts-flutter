@@ -27,8 +27,8 @@ class CategoryWidget extends StatelessWidget {
                   child: Icon(Icons.image_not_supported, size: 80, color: Theme.of(context).colorScheme.outline),
                 ),
           ),
-          Text(category.name, style: TextStyle(fontWeight: FontWeight.w600), textAlign: TextAlign.center),
-          SizedBox(height: 4),
+          Text(category.name, style: const TextStyle(fontWeight: FontWeight.w600), textAlign: TextAlign.center),
+          const SizedBox(height: 4),
         ],
       ),
     );

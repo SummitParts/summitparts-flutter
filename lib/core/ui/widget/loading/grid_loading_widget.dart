@@ -29,7 +29,7 @@ class GridLoadingWidget extends StatelessWidget {
                 decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(8)),
               ),
               const SizedBox(height: 8),
-              Stack(children: [Container(color: Colors.grey, child: Text('Title is here'))]),
+              Stack(children: [Container(color: Colors.grey, child: const Text('Title is here'))]),
               const SizedBox(height: 4),
             ],
           );

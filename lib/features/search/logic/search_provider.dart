@@ -15,7 +15,7 @@ class SearchProductsNotifier extends AutoDisposeAsyncNotifier<Products> {
   }
 
   Future<void> search(String searchQuery) async {
-    state = AsyncValue.loading();
+    state = const AsyncValue.loading();
     state = await AsyncValue.guard(() => ref.read(searchDataProvider).search(searchQuery));
   }
 

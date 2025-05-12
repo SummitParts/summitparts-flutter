@@ -103,7 +103,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
               ),
               const SizedBox(height: 24),
               authState.maybeWhen(
-                loading: () => Center(child: CircularProgressIndicator.adaptive()),
+                loading: () => const Center(child: CircularProgressIndicator.adaptive()),
                 orElse: () {
                   return ElevatedButton(
                     onPressed: _signIn,

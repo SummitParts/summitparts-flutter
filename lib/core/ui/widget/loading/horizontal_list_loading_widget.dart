@@ -11,9 +11,9 @@ class HorizontalListLoadingWidget extends StatelessWidget {
       highlightColor: Theme.of(context).colorScheme.outlineVariant.withAlpha(128),
       enabled: true,
       child: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Row(
           spacing: 8,
           children: [
@@ -28,8 +28,8 @@ class HorizontalListLoadingWidget extends StatelessWidget {
                         height: MediaQuery.sizeOf(context).width / 2.6,
                         decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(8)),
                       ),
-                      Stack(children: [Container(color: Colors.grey, child: Text('Title is here'))]),
-                      SizedBox(height: 4),
+                      Stack(children: [Container(color: Colors.grey, child: const Text('Title is here'))]),
+                      const SizedBox(height: 4),
                     ],
                   ),
                 ],
