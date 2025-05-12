@@ -9,9 +9,9 @@ class ErrorFormatter with UiLoggy {
   ErrorFormatter._();
 
   static String format(Exception exception, [StackTrace? st]) {
-    logDebug('Exception - $exception');
+    logError('Exception - $exception');
     if (st != null) {
-      logDebug('Stack Trace - $st');
+      logError('Stack Trace - $st');
     }
 
     if (exception is AppException) {
