@@ -41,40 +41,44 @@ class HomeScreen extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Stack(
-              children: [
-                Assets.images.banner.image(height: MediaQuery.sizeOf(context).height / 5, fit: BoxFit.cover),
-                Positioned.fill(
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [Colors.black, Colors.transparent],
-                        begin: Alignment.bottomCenter,
-                        end: Alignment.topCenter,
-                        stops: [0.1, 0.9],
+            SizedBox(
+              height: MediaQuery.sizeOf(context).height / 4,
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  Assets.images.banner.image(fit: BoxFit.cover),
+                  Positioned.fill(
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Colors.black, Colors.transparent],
+                          begin: Alignment.bottomCenter,
+                          end: Alignment.topCenter,
+                          stops: [0.1, 0.9],
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const Positioned(
-                  bottom: 16,
-                  left: 16,
-                  right: 16,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Summit Laundry Parts',
-                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 24),
-                      ),
-                      Text(
-                        'Shop all Commercial and Domestic Laundry Parts for all major brands, at the lowest prices',
-                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 14),
-                      ),
-                    ],
+                  const Positioned(
+                    bottom: 16,
+                    left: 16,
+                    right: 16,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Summit Laundry Parts',
+                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 24),
+                        ),
+                        Text(
+                          'Shop all Commercial and Domestic Laundry Parts for all major brands, at the lowest prices',
+                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 14),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             InkWell(
               onTap: () => context.go('/catalog/laundry_parts'),
