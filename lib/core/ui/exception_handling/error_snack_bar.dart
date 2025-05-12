@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:summit_parts/core/exception_handling/error_formatter.dart';
 
 void showErrorSnackBar(BuildContext context, Object? exception, {SnackBarAction? action}) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       content: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Icons.warning_rounded, color: Theme.of(context).colorScheme.onError),
+          Icon(FontAwesomeIcons.triangleExclamation, color: Theme.of(context).colorScheme.onError),
           const SizedBox(width: 8),
           Flexible(
             child: Text(

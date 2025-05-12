@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:summit_parts/core/exception_handling/error_formatter.dart';
 
 class GenericError extends StatelessWidget {
@@ -20,7 +21,7 @@ class GenericError extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(Icons.warning_rounded, color: Theme.of(context).colorScheme.error, size: 60),
+                Icon(FontAwesomeIcons.triangleExclamation, color: Theme.of(context).colorScheme.error, size: 60),
                 const SizedBox(height: 16),
                 Text(
                   'Oops! Something went wrong!',
