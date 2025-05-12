@@ -31,11 +31,7 @@ class GridLoadingWidget extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
-              Stack(
-                children: [
-                  Container(color: Theme.of(context).colorScheme.outlineVariant, child: const Text('Title is here')),
-                ],
-              ),
+              Container(color: Theme.of(context).colorScheme.outlineVariant, child: const Text('Title is here')),
               const SizedBox(height: 4),
             ],
           );

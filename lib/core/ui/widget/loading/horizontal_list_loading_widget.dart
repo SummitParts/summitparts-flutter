@@ -8,14 +8,13 @@ class HorizontalListLoadingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
       baseColor: Theme.of(context).colorScheme.outlineVariant,
-      highlightColor: Theme.of(context).colorScheme.outlineVariant.withAlpha(128),
-      enabled: true,
+      highlightColor: Theme.of(context).colorScheme.surfaceBright,
       child: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Row(
-          spacing: 8,
+          spacing: 16,
           children: [
             for (int i = 0; i < 3; i++)
               Column(
@@ -26,9 +25,15 @@ class HorizontalListLoadingWidget extends StatelessWidget {
                       Container(
                         width: MediaQuery.sizeOf(context).width / 2.6,
                         height: MediaQuery.sizeOf(context).width / 2.6,
-                        decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(8)),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.outlineVariant,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
                       ),
-                      Stack(children: [Container(color: Colors.grey, child: const Text('Title is here'))]),
+                      Container(
+                        color: Theme.of(context).colorScheme.outlineVariant,
+                        child: const Text('Title is here'),
+                      ),
                       const SizedBox(height: 4),
                     ],
                   ),
