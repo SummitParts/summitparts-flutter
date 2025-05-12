@@ -13,7 +13,9 @@ class _LightAppTheme extends AppTheme {
       seedColor: const Color(0xFF0C71C3),
       primary: const Color(0xFF0C71C3),
       surface: Colors.white,
+      surfaceBright: const Color(0xFFF3F4F6),
       onSurface: const Color(0xFF171717),
+      outlineVariant: const Color(0xFFE5E7EB),
     );
 
     return ThemeData(
