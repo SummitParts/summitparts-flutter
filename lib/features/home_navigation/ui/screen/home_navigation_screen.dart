@@ -20,12 +20,16 @@ class HomeNavigationScreen extends ConsumerWidget {
         },
         canPop: currentScreen.index == 0,
         child: Scaffold(
-          body: currentScreen.screen,
+          body: IndexedStack(
+            index: currentScreen.index,
+            children:
+                FeatureTab.values.map((featuredTab) {
+                  return featuredTab.screen;
+                }).toList(),
+          ),
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: currentScreen.index,
-            onTap: (index) {
-              ref.read(currentScreenProvider.notifier).state = FeatureTab.values[index];
-            },
+            onTap: (index) => ref.read(currentScreenProvider.notifier).state = FeatureTab.values[index],
             items:
                 FeatureTab.values
                     .map((featureTab) => BottomNavigationBarItem(icon: Icon(featureTab.icon), label: featureTab.label))
