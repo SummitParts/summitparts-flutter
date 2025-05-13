@@ -18,10 +18,13 @@ class _LightAppTheme extends AppTheme {
       outlineVariant: const Color(0xFFE5E7EB),
     );
 
+    const textTheme = TextTheme();
+
     return ThemeData(
       fontFamily: FontFamily.poppins,
       brightness: Brightness.light,
       colorScheme: colorScheme,
+      textTheme: textTheme,
       appBarTheme: const AppBarTheme(
         centerTitle: false,
         titleTextStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
