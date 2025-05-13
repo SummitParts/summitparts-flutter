@@ -18,7 +18,11 @@ class _LightAppTheme extends AppTheme {
       outlineVariant: const Color(0xFFE5E7EB),
     );
 
-    const textTheme = TextTheme();
+    const textTheme = TextTheme(
+      headlineSmall: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w600),
+      titleMedium: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+      titleSmall: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+    );
 
     return ThemeData(
       fontFamily: FontFamily.poppins,
