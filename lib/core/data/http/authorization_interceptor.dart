@@ -69,8 +69,8 @@ class AuthorizationInterceptor extends Interceptor {
         // If refresh fails, clear tokens and let the error propagate
         inMemoryStorageDataProvider.delete(key: StorageConstants.accessTokenKey);
         inMemoryStorageDataProvider.delete(key: StorageConstants.refreshTokenKey);
-        secureStorageDataProvider.delete(key: StorageConstants.accessTokenKey);
-        secureStorageDataProvider.delete(key: StorageConstants.refreshTokenKey);
+        await secureStorageDataProvider.delete(key: StorageConstants.accessTokenKey);
+        await secureStorageDataProvider.delete(key: StorageConstants.refreshTokenKey);
       } finally {
         _isRefreshing = false;
       }
