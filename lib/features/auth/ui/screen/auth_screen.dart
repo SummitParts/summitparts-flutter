@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:summit_parts/core/ui/exception_handling/error_snack_bar.dart';
 import 'package:summit_parts/features/auth/logic/auth_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AuthScreen extends ConsumerStatefulWidget {
   const AuthScreen({super.key});
@@ -94,6 +95,26 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                   return null;
                 },
                 onFieldSubmitted: (_) => _signIn(),
+              ),
+              const SizedBox(height: 8),
+              Align(
+                alignment: Alignment.centerRight,
+                child: SizedBox(
+                  height: 20,
+                  child: TextButton(
+                    onPressed: () {
+                      launchUrl(
+                        Uri.https('www.summitparts.com', '/shop/login/retrieve/'),
+                        mode: LaunchMode.inAppBrowserView,
+                      );
+                    },
+                    style: TextButton.styleFrom(
+                      textStyle: Theme.of(context).textTheme.labelMedium,
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                    ),
+                    child: const Text('Forgot your password?'),
+                  ),
+                ),
               ),
               const SizedBox(height: 24),
               authState.maybeWhen(

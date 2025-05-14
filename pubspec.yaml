@@ -26,6 +26,7 @@ dependencies:
   # Networking
   dio: ^5.8.0+1
   cached_network_image: ^3.4.1
+  url_launcher: ^6.3.1
 
   # Local Storage
   flutter_secure_storage: ^9.2.4
