@@ -19,7 +19,6 @@ class SeeAllButton extends StatelessWidget {
           iconSize: 10,
           textStyle: Theme.of(context).textTheme.labelMedium,
           padding: const EdgeInsets.symmetric(horizontal: 4),
-          visualDensity: VisualDensity.compact,
         ),
       ),
     );
