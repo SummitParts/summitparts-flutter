@@ -20,6 +20,7 @@ class _LightAppTheme extends AppTheme {
 
     const textTheme = TextTheme(
       headlineSmall: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w600),
+      titleLarge: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
       titleMedium: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
       titleSmall: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
       labelLarge: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
