@@ -39,7 +39,14 @@ class UserScreen extends ConsumerWidget {
               ),
             );
       },
-      error: (error, _) => GenericError(exception: error),
+      error: (error, _) {
+        return GenericError(
+          exception: error,
+          actions: [
+            TextButton(onPressed: () => ref.read(authNotifierProvider.notifier).signOut(), child: const Text('Logout')),
+          ],
+        );
+      },
       orElse: () => const Scaffold(body: Center(child: CircularProgressIndicator.adaptive())),
     );
   }
