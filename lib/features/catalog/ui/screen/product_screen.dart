@@ -34,14 +34,21 @@ class ProductScreen extends StatelessWidget {
                     doubleTapZoomable: true,
                   );
                 },
-                child: CachedNetworkImage(
-                  imageUrl: product.imageUrl,
-                  fit: BoxFit.cover,
-                  errorWidget:
-                      (context, url, error) => Container(
-                        color: Theme.of(context).colorScheme.outlineVariant,
-                        child: Icon(Icons.image_not_supported, size: 80, color: Theme.of(context).colorScheme.outline),
-                      ),
+                child: Hero(
+                  tag: product.id,
+                  child: CachedNetworkImage(
+                    imageUrl: product.imageUrl,
+                    fit: BoxFit.cover,
+                    errorWidget:
+                        (context, url, error) => Container(
+                          color: Theme.of(context).colorScheme.outlineVariant,
+                          child: Icon(
+                            Icons.image_not_supported,
+                            size: 80,
+                            color: Theme.of(context).colorScheme.outline,
+                          ),
+                        ),
+                  ),
                 ),
               ),
             ),

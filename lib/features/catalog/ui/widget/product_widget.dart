@@ -19,14 +19,21 @@ class ProductWidget extends StatelessWidget {
             child: Stack(
               fit: StackFit.expand,
               children: [
-                CachedNetworkImage(
-                  imageUrl: product.imageUrl,
-                  errorWidget:
-                      (context, url, error) => SizedBox(
-                        width: MediaQuery.sizeOf(context).width / 2.6,
-                        height: MediaQuery.sizeOf(context).width / 2.6,
-                        child: Icon(Icons.image_not_supported, size: 80, color: Theme.of(context).colorScheme.outline),
-                      ),
+                Hero(
+                  tag: product.id,
+                  child: CachedNetworkImage(
+                    imageUrl: product.imageUrl,
+                    errorWidget:
+                        (context, url, error) => SizedBox(
+                          width: MediaQuery.sizeOf(context).width / 2.6,
+                          height: MediaQuery.sizeOf(context).width / 2.6,
+                          child: Icon(
+                            Icons.image_not_supported,
+                            size: 80,
+                            color: Theme.of(context).colorScheme.outline,
+                          ),
+                        ),
+                  ),
                 ),
                 Positioned(top: 8, left: 8, child: PriceTag(price: product.price)),
               ],
