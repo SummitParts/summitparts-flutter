@@ -33,40 +33,33 @@ class ProductWidget extends StatelessWidget {
                         ),
                   ),
                 ),
-                if (true)
-                  Positioned(
-                    top: 8,
-                    left: 8,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primary,
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: Text(
-                        '\$${product.price}',
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.onPrimary,
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
+                Positioned(top: 8, left: 8, child: PriceTag(price: product.price)),
               ],
             ),
           ),
           const SizedBox(height: 4),
-          Text(product.id, style: const TextStyle(fontWeight: FontWeight.w600), textAlign: TextAlign.center),
-          Text(
-            product.name,
-            style: const TextStyle(),
-            textAlign: TextAlign.center,
-            overflow: TextOverflow.ellipsis,
-            maxLines: 2,
-          ),
+          Text(product.id, style: Theme.of(context).textTheme.labelLarge, textAlign: TextAlign.center),
+          Text(product.name, textAlign: TextAlign.center, overflow: TextOverflow.ellipsis, maxLines: 2),
           const SizedBox(height: 4),
         ],
+      ),
+    );
+  }
+}
+
+class PriceTag extends StatelessWidget {
+  const PriceTag({super.key, required this.price});
+
+  final double price;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+      decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, borderRadius: BorderRadius.circular(4)),
+      child: Text(
+        '\$$price',
+        style: TextStyle(color: Theme.of(context).colorScheme.onPrimary, fontSize: 12, fontWeight: FontWeight.bold),
       ),
     );
   }
