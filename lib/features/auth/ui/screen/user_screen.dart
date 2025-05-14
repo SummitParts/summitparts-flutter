@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:summit_parts/core/ui/widget/generic_error.dart';
+import 'package:summit_parts/features/auth/logic/auth_provider.dart';
 import 'package:summit_parts/features/auth/logic/user_provider.dart';
 import 'package:summit_parts/features/auth/ui/screen/auth_screen.dart';
 
@@ -26,9 +27,7 @@ class UserScreen extends ConsumerWidget {
                   children: [
                     const Text('User Logged In'),
                     TextButton(
-                      onPressed: () {
-                        ref.read(userNotifierProvider.notifier).signOut();
-                      },
+                      onPressed: () => ref.read(authNotifierProvider.notifier).signOut(),
                       child: const Text('Logout'),
                     ),
                   ],

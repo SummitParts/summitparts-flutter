@@ -18,6 +18,10 @@ class AuthDataProvider {
     return SignInResponse.fromJson(response.data);
   }
 
+  Future<void> signOut() async {
+    await _dio.post('/auth/logout');
+  }
+
   Future<UserProfile> getUserProfile() async {
     final response = await _dio.get('/user/profile');
     return UserProfile.fromJson(response.data);

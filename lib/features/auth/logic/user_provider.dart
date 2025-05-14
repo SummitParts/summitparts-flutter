@@ -23,12 +23,4 @@ class UserNotifier extends AutoDisposeAsyncNotifier<UserProfile?> {
     }
     return null;
   }
-
-  void signOut() {
-    _secureStorageDataProvider.delete(key: StorageConstants.accessTokenKey);
-    _secureStorageDataProvider.delete(key: StorageConstants.refreshTokenKey);
-    _inMemoryStorageDataProvider.delete(key: StorageConstants.accessTokenKey);
-    _inMemoryStorageDataProvider.delete(key: StorageConstants.refreshTokenKey);
-    state = const AsyncData(null);
-  }
 }
