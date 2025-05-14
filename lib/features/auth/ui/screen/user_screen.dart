@@ -21,11 +21,19 @@ class UserScreen extends ConsumerWidget {
                 backgroundColor: Theme.of(context).colorScheme.primary,
                 foregroundColor: Theme.of(context).colorScheme.onPrimary,
               ),
-              body: Center(
+              body: Padding(
+                padding: const EdgeInsets.all(16),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    const Text('User Logged In'),
+                    Text('userKey: ${user.userKey}'),
+                    Text('userId: ${user.userId}'),
+                    Text('customerId: ${user.customerId}'),
+                    Text('customerNo: ${user.customerNo}'),
+                    Text('arDivisionNo: ${user.arDivisionNo}'),
+                    Text('customerKey: ${user.customerKey}'),
+                    Text('fullName: ${user.fullName}'),
                     TextButton(
                       onPressed: () => ref.read(authNotifierProvider.notifier).signOut(),
                       child: const Text('Logout'),
