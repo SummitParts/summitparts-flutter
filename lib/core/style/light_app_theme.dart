@@ -23,6 +23,7 @@ class _LightAppTheme extends AppTheme {
       titleMedium: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
       titleSmall: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
       labelLarge: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+      labelMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
     );
 
     return ThemeData(
