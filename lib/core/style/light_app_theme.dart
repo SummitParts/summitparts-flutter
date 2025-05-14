@@ -29,9 +29,11 @@ class _LightAppTheme extends AppTheme {
       brightness: Brightness.light,
       colorScheme: colorScheme,
       textTheme: textTheme,
-      appBarTheme: const AppBarTheme(
+      appBarTheme: AppBarTheme(
         centerTitle: false,
-        titleTextStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+        titleTextStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+        backgroundColor: colorScheme.primary,
+        foregroundColor: colorScheme.onPrimary,
       ),
     );
   }

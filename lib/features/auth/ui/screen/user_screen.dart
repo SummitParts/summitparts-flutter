@@ -16,11 +16,7 @@ class UserScreen extends ConsumerWidget {
         return user == null
             ? const AuthScreen()
             : Scaffold(
-              appBar: AppBar(
-                title: const Text('Account'),
-                backgroundColor: Theme.of(context).colorScheme.primary,
-                foregroundColor: Theme.of(context).colorScheme.onPrimary,
-              ),
+              appBar: AppBar(title: const Text('Account')),
               body: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(

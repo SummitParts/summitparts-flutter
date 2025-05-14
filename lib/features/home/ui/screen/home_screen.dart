@@ -18,6 +18,8 @@ class HomeScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Assets.images.summitLogo.image(height: 40),
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        foregroundColor: Theme.of(context).colorScheme.onSurface,
         actions: [
           IconButton(
             onPressed: () => context.push(SearchScreen.path),
