@@ -47,13 +47,9 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
       next.maybeWhen(error: (error, _) => showErrorSnackBar(context, error), orElse: () {});
     });
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('User Login'),
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        foregroundColor: Theme.of(context).colorScheme.onPrimary,
-      ),
+      appBar: AppBar(title: const Text('User Login')),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Form(
           key: _formKey,
           child: Column(
@@ -65,7 +61,6 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                   labelText: 'User ID',
                   hintText: 'Enter your email address',
                   prefixIcon: Icon(FontAwesomeIcons.userLarge),
-                  border: OutlineInputBorder(),
                 ),
                 keyboardType: TextInputType.emailAddress,
                 textInputAction: TextInputAction.next,
@@ -88,7 +83,6 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
                     icon: Icon(_isPasswordVisible ? FontAwesomeIcons.solidEye : FontAwesomeIcons.solidEyeSlash),
                     onPressed: () => setState(() => _isPasswordVisible = !_isPasswordVisible),
                   ),
-                  border: const OutlineInputBorder(),
                 ),
                 obscureText: !_isPasswordVisible,
                 textInputAction: TextInputAction.done,
@@ -104,17 +98,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
               const SizedBox(height: 24),
               authState.maybeWhen(
                 loading: () => const Center(child: CircularProgressIndicator.adaptive()),
-                orElse: () {
-                  return ElevatedButton(
-                    onPressed: _signIn,
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      backgroundColor: Theme.of(context).colorScheme.primary,
-                      foregroundColor: Theme.of(context).colorScheme.onPrimary,
-                    ),
-                    child: const Text('Login'),
-                  );
-                },
+                orElse: () => ElevatedButton(onPressed: _signIn, child: const Text('Login')),
               ),
             ],
           ),
