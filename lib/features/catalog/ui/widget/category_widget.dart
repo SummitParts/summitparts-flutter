@@ -20,12 +20,13 @@ class CategoryWidget extends StatelessWidget {
             imageUrl: category.imageUrl,
             width: MediaQuery.sizeOf(context).width / 2.6,
             height: MediaQuery.sizeOf(context).width / 2.6,
-            errorWidget:
-                (context, url, error) => SizedBox(
-                  width: MediaQuery.sizeOf(context).width / 2.6,
-                  height: MediaQuery.sizeOf(context).width / 2.6,
-                  child: Icon(Icons.image_not_supported, size: 80, color: Theme.of(context).colorScheme.outline),
-                ),
+            errorWidget: (context, url, error) {
+              return SizedBox(
+                width: MediaQuery.sizeOf(context).width / 2.6,
+                height: MediaQuery.sizeOf(context).width / 2.6,
+                child: Icon(Icons.image_not_supported, size: 80, color: Theme.of(context).colorScheme.outline),
+              );
+            },
           ),
           Text(category.name, style: Theme.of(context).textTheme.labelLarge, textAlign: TextAlign.center),
         ],

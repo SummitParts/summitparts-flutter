@@ -43,15 +43,16 @@ class ProductScreen extends StatelessWidget {
                       CachedNetworkImage(
                         imageUrl: product.imageUrl,
                         fit: BoxFit.cover,
-                        errorWidget:
-                            (context, url, error) => Container(
-                              color: Theme.of(context).colorScheme.outlineVariant,
-                              child: Icon(
-                                Icons.image_not_supported,
-                                size: 80,
-                                color: Theme.of(context).colorScheme.outline,
-                              ),
+                        errorWidget: (context, url, error) {
+                          return Container(
+                            color: Theme.of(context).colorScheme.outlineVariant,
+                            child: Icon(
+                              Icons.image_not_supported,
+                              size: 80,
+                              color: Theme.of(context).colorScheme.outline,
                             ),
+                          );
+                        },
                       ),
                       Positioned(
                         top: 0,
