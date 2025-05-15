@@ -38,8 +38,6 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Search Catalog'),
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        foregroundColor: Theme.of(context).colorScheme.onPrimary,
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(60),
           child: Padding(
@@ -49,19 +47,18 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               decoration: InputDecoration(
                 hintText: 'Search for parts...',
                 prefixIcon: const Icon(FontAwesomeIcons.magnifyingGlass),
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
                 filled: true,
-                fillColor: Colors.white,
-                contentPadding: const EdgeInsets.symmetric(vertical: 0),
+                fillColor: Theme.of(context).colorScheme.surface,
+                contentPadding: EdgeInsets.zero,
               ),
               autocorrect: false,
-              keyboardType: TextInputType.webSearch,
+              keyboardType: TextInputType.name,
               onTapOutside: (_) => FocusScope.of(context).unfocus(),
               autofocus: true,
               textInputAction: TextInputAction.search,
               onSubmitted: (value) {
-                if (value.isNotEmpty) {
-                  ref.read(searchProductsNotifierProvider.notifier).search(value);
+                if (value.trim().isNotEmpty) {
+                  ref.read(searchProductsNotifierProvider.notifier).search(value.trim());
                 } else {
                   ref.read(searchProductsNotifierProvider.notifier).clear();
                 }
@@ -75,7 +72,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           if (_searchQueryController.text.isEmpty) {
             return Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Icon(FontAwesomeIcons.magnifyingGlass, size: 64, color: Theme.of(context).colorScheme.outline),
                   const SizedBox(height: 16),
@@ -114,8 +111,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
             },
           );
         },
-        error: (error, st) => GenericError(exception: error),
-        loading: () => const Padding(padding: EdgeInsets.symmetric(vertical: 16), child: GridLoadingWidget()),
+        error: (error, _) => GenericError(exception: error),
+        loading: () => const Padding(padding: EdgeInsets.symmetric(vertical: 24), child: GridLoadingWidget()),
       ),
     );
   }
