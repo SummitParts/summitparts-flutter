@@ -11,6 +11,10 @@ class Products extends Equatable {
   final List<Product> items;
   final PaginationMeta meta;
 
+  factory Products.empty() {
+    return Products(items: const [], meta: PaginationMeta.empty());
+  }
+
   factory Products.fromJson(Map<String, dynamic> json) => _$ProductsFromJson(json);
 
   @override

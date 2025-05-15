@@ -10,9 +10,7 @@ final searchProductsNotifierProvider = AsyncNotifierProvider.autoDispose<SearchP
 
 class SearchProductsNotifier extends AutoDisposeAsyncNotifier<Products> {
   @override
-  Future<Products> build() async {
-    return Products(items: [], meta: PaginationMeta.empty());
-  }
+  Future<Products> build() async => Products.empty();
 
   Future<void> search(String searchQuery) async {
     state = const AsyncValue.loading();
@@ -20,6 +18,6 @@ class SearchProductsNotifier extends AutoDisposeAsyncNotifier<Products> {
   }
 
   void clear() {
-    state = AsyncValue.data(Products(items: [], meta: PaginationMeta.empty()));
+    state = AsyncValue.data(Products.empty());
   }
 }
