@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:summit_parts/features/catalog/model/product.dart';
 
 class ProductWidget extends StatelessWidget {
@@ -23,6 +24,13 @@ class ProductWidget extends StatelessWidget {
                   tag: product.id,
                   child: CachedNetworkImage(
                     imageUrl: product.imageUrl,
+                    placeholder: (context, _) {
+                      return Shimmer.fromColors(
+                        baseColor: Theme.of(context).colorScheme.outlineVariant,
+                        highlightColor: Theme.of(context).colorScheme.surfaceBright,
+                        child: Container(color: Theme.of(context).colorScheme.outlineVariant),
+                      );
+                    },
                     errorWidget: (context, url, error) {
                       return SizedBox(
                         width: MediaQuery.sizeOf(context).width / 2.6,

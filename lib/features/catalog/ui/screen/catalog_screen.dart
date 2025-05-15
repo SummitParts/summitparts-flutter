@@ -53,6 +53,13 @@ class CatalogScreen extends ConsumerWidget {
                             CachedNetworkImage(
                               imageUrl: catalog.bannerImageUrl!,
                               fit: BoxFit.cover,
+                              placeholder: (context, _) {
+                                return Shimmer.fromColors(
+                                  baseColor: Theme.of(context).colorScheme.outlineVariant,
+                                  highlightColor: Theme.of(context).colorScheme.surfaceBright,
+                                  child: Container(color: Theme.of(context).colorScheme.outlineVariant),
+                                );
+                              },
                               errorWidget: (context, url, error) {
                                 return Container(
                                   color: Theme.of(context).colorScheme.outlineVariant,
@@ -111,7 +118,7 @@ class CatalogScreen extends ConsumerWidget {
                   color: Theme.of(context).colorScheme.surface,
                   child: Shimmer.fromColors(
                     baseColor: Theme.of(context).colorScheme.outlineVariant,
-                    highlightColor: Theme.of(context).colorScheme.outlineVariant.withAlpha(128),
+                    highlightColor: Theme.of(context).colorScheme.surfaceBright,
                     child: FlexibleSpaceBar(
                       stretchModes: const [StretchMode.zoomBackground, StretchMode.blurBackground],
                       titlePadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
