@@ -58,7 +58,7 @@ class ProductScreen extends StatelessWidget {
                         top: 0,
                         left: 0,
                         right: 0,
-                        height: 80 + MediaQuery.of(context).padding.top,
+                        height: 80 + MediaQuery.paddingOf(context).top,
                         child: DecoratedBox(
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
