@@ -17,17 +17,17 @@ class SearchScreen extends ConsumerStatefulWidget {
 }
 
 class _SearchScreenState extends ConsumerState<SearchScreen> {
-  late final TextEditingController _searchQueryController;
+  late final TextEditingController searchQueryController;
 
   @override
   void initState() {
     super.initState();
-    _searchQueryController = TextEditingController();
+    searchQueryController = TextEditingController();
   }
 
   @override
   void dispose() {
-    _searchQueryController.dispose();
+    searchQueryController.dispose();
     super.dispose();
   }
 
@@ -43,7 +43,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
             child: TextField(
-              controller: _searchQueryController,
+              controller: searchQueryController,
               decoration: InputDecoration(
                 hintText: 'Search for parts...',
                 prefixIcon: const Icon(FontAwesomeIcons.magnifyingGlass),
@@ -69,7 +69,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       ),
       body: searchProductsAsync.when(
         data: (value) {
-          if (_searchQueryController.text.isEmpty) {
+          if (searchQueryController.text.isEmpty) {
             return Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -86,10 +86,10 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               ),
             );
           }
-          if (value.items.isEmpty && _searchQueryController.text.isNotEmpty) {
+          if (value.items.isEmpty && searchQueryController.text.isNotEmpty) {
             return Center(
               child: Text(
-                'No results found for "${_searchQueryController.text}"',
+                'No results found for "${searchQueryController.text}"',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.outline),
               ),
             );
@@ -111,7 +111,16 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
             },
           );
         },
-        error: (error, _) => GenericError(exception: error),
+        error: (error, _) {
+          return GenericError(
+            exception: error,
+            onRetry: () {
+              if (searchQueryController.text.trim().isNotEmpty) {
+                ref.read(searchProductsNotifierProvider.notifier).search(searchQueryController.text.trim());
+              }
+            },
+          );
+        },
         loading: () => const Padding(padding: EdgeInsets.symmetric(vertical: 24), child: GridLoadingWidget()),
       ),
     );

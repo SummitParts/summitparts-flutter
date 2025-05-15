@@ -15,29 +15,29 @@ class AuthScreen extends ConsumerStatefulWidget {
 }
 
 class _AuthScreenState extends ConsumerState<AuthScreen> {
-  late final GlobalKey<FormState> _formKey;
-  late final TextEditingController _emailController;
-  late final TextEditingController _passwordController;
+  late final GlobalKey<FormState> formKey;
+  late final TextEditingController emailController;
+  late final TextEditingController passwordController;
   bool _isPasswordVisible = false;
 
   @override
   void initState() {
     super.initState();
-    _formKey = GlobalKey<FormState>();
-    _emailController = TextEditingController();
-    _passwordController = TextEditingController();
+    formKey = GlobalKey<FormState>();
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
   }
 
   @override
   void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
     super.dispose();
   }
 
   Future<void> _signIn() async {
-    if (_formKey.currentState?.validate() ?? false) {
-      ref.read(authNotifierProvider.notifier).signIn(_emailController.text.trim(), _passwordController.text.trim());
+    if (formKey.currentState?.validate() ?? false) {
+      ref.read(authNotifierProvider.notifier).signIn(emailController.text.trim(), passwordController.text.trim());
     }
   }
 
@@ -52,12 +52,12 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Form(
-          key: _formKey,
+          key: formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               TextFormField(
-                controller: _emailController,
+                controller: emailController,
                 decoration: const InputDecoration(
                   labelText: 'User ID',
                   hintText: 'Enter your email address',
@@ -75,7 +75,7 @@ class _AuthScreenState extends ConsumerState<AuthScreen> {
               ),
               const SizedBox(height: 16),
               TextFormField(
-                controller: _passwordController,
+                controller: passwordController,
                 decoration: InputDecoration(
                   labelText: 'Password',
                   hintText: 'Enter your password',
