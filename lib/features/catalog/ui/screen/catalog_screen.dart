@@ -43,7 +43,7 @@ class CatalogScreen extends ConsumerWidget {
               },
               flexibleSpace: switch (catalogAsync) {
                 AsyncData(value: final catalog) =>
-                  catalog.bannerImageUrl == null && catalog.bannerImageUrl!.isNotEmpty
+                  catalog.bannerImageUrl == null || catalog.bannerImageUrl!.isEmpty
                       ? null
                       : FlexibleSpaceBar(
                         stretchModes: const [StretchMode.zoomBackground, StretchMode.blurBackground],

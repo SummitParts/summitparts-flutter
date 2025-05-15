@@ -34,7 +34,7 @@ class _LightAppTheme extends AppTheme {
       textTheme: textTheme,
       appBarTheme: AppBarTheme(
         centerTitle: false,
-        titleTextStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+        titleTextStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         backgroundColor: colorScheme.primary,
         foregroundColor: colorScheme.onPrimary,
       ),
