@@ -42,6 +42,7 @@ class UserScreen extends ConsumerWidget {
       error: (error, _) {
         return GenericError(
           exception: error,
+          onRetry: () => ref.invalidate(userNotifierProvider),
           actions: [
             TextButton(onPressed: () => ref.read(authNotifierProvider.notifier).signOut(), child: const Text('Logout')),
           ],

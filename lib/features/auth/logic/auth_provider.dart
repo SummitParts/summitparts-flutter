@@ -34,9 +34,9 @@ class AuthNotifier extends AutoDisposeAsyncNotifier<SignInResponse?> {
   Future<void> signOut() async {
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      await _authDataProvider.signOut();
-      _secureStorageDataProvider.delete(key: StorageConstants.accessTokenKey);
-      _secureStorageDataProvider.delete(key: StorageConstants.refreshTokenKey);
+      _authDataProvider.signOut();
+      await _secureStorageDataProvider.delete(key: StorageConstants.accessTokenKey);
+      await _secureStorageDataProvider.delete(key: StorageConstants.refreshTokenKey);
       _inMemoryStorageDataProvider.delete(key: StorageConstants.accessTokenKey);
       _inMemoryStorageDataProvider.delete(key: StorageConstants.refreshTokenKey);
       return null;
