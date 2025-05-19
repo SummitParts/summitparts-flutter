@@ -20,16 +20,6 @@ class SearchScreen extends ConsumerStatefulWidget {
 
 class _SearchScreenState extends ConsumerState<SearchScreen> {
   @override
-  void deactivate() {
-    if (mounted) {
-      ref.invalidate(searchProductsCountProvider);
-      ref.invalidate(paginatedSearchProductsProvider);
-      ref.invalidate(searchQueryProvider);
-    }
-    super.deactivate();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final searchQuery = ref.watch(searchQueryProvider);
     final searchProductsCountAsync = ref.watch(searchProductsCountProvider);

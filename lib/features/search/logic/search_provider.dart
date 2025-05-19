@@ -9,9 +9,7 @@ final paginatedSearchProductsProvider = FutureProvider.autoDispose.family<Produc
   if (searchQuery.trim().isEmpty) {
     return Products.empty();
   }
-  final searchResult = await ref.read(searchDataProvider).search(searchQuery, page: pageIndex + 1);
-  ref.keepAlive();
-  return searchResult;
+  return ref.read(searchDataProvider).search(searchQuery, page: pageIndex + 1);
 });
 
 final searchProductsCountProvider = Provider.autoDispose<AsyncValue<int>>((ref) {
