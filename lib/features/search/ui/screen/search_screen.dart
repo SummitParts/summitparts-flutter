@@ -106,7 +106,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               return currentProductAsync.when(
                 data: (product) => ProductWidget(product: product, onTap: () => context.push('/item', extra: product)),
                 loading: () => const ProductLoadingWidget(),
-                error: (_, __) => const Icon(Icons.error),
+                error: (_, _) => const GenericError(),
               );
             },
           );
