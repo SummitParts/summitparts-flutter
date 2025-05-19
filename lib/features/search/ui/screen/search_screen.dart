@@ -19,20 +19,6 @@ class SearchScreen extends ConsumerStatefulWidget {
 }
 
 class _SearchScreenState extends ConsumerState<SearchScreen> {
-  late final TextEditingController searchQueryController;
-
-  @override
-  void initState() {
-    super.initState();
-    searchQueryController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    searchQueryController.dispose();
-    super.dispose();
-  }
-
   @override
   void deactivate() {
     if (mounted) {
@@ -45,6 +31,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final searchQuery = ref.watch(searchQueryProvider);
     final searchProductsCountAsync = ref.watch(searchProductsCountProvider);
 
     return Scaffold(
@@ -55,7 +42,6 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
             child: TextField(
-              controller: searchQueryController,
               decoration: InputDecoration(
                 hintText: 'Search for parts...',
                 prefixIcon: const Icon(FontAwesomeIcons.magnifyingGlass),
@@ -79,7 +65,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           return GenericError(exception: error, onRetry: () => ref.invalidate(paginatedSearchProductsProvider));
         },
         data: (int count) {
-          if (searchQueryController.text.isEmpty) {
+          if (searchQuery.isEmpty) {
             return Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -96,10 +82,10 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               ),
             );
           }
-          if (count == 0 && searchQueryController.text.isNotEmpty) {
+          if (count == 0 && searchQuery.isNotEmpty) {
             return Center(
               child: Text(
-                'No results found for "${searchQueryController.text}"',
+                'No results found for "$searchQuery"',
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.outline),
               ),
             );
