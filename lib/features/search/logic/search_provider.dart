@@ -1,23 +1,19 @@
-import 'dart:async';
-
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:summit_parts/features/catalog/model/products.dart';
 import 'package:summit_parts/features/search/data/search_data_provider.dart';
 
-final searchProductsNotifierProvider = AsyncNotifierProvider.autoDispose<SearchProductsNotifier, Products>(
-  SearchProductsNotifier.new,
-);
+final searchQueryProvider = StateProvider.autoDispose<String>((ref) => '');
 
-class SearchProductsNotifier extends AutoDisposeAsyncNotifier<Products> {
-  @override
-  Future<Products> build() async => Products.empty();
-
-  Future<void> search(String searchQuery) async {
-    state = const AsyncValue.loading();
-    state = await AsyncValue.guard(() => ref.read(searchDataProvider).search(searchQuery));
+final paginatedSearchProductsProvider = FutureProvider.autoDispose.family<Products, int>((ref, pageIndex) async {
+  final searchQuery = ref.watch(searchQueryProvider);
+  if (searchQuery.trim().isEmpty) {
+    return Products.empty();
   }
+  final searchResult = await ref.read(searchDataProvider).search(searchQuery, page: pageIndex + 1);
+  ref.keepAlive();
+  return searchResult;
+});
 
-  void clear() {
-    state = AsyncValue.data(Products.empty());
-  }
-}
+final searchProductsCountProvider = Provider.autoDispose<AsyncValue<int>>((ref) {
+  return ref.watch(paginatedSearchProductsProvider(0)).whenData((products) => products.meta.totalItems);
+});
