@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:summit_parts/core/constants/api_constants.dart';
 import 'package:summit_parts/core/ui/widget/generic_error.dart';
 import 'package:summit_parts/core/ui/widget/loading/grid_loading_widget.dart';
+import 'package:summit_parts/core/ui/widget/loading/product_loading_widget.dart';
 import 'package:summit_parts/features/catalog/ui/widget/product_widget.dart';
 import 'package:summit_parts/features/search/logic/search_provider.dart';
 
@@ -32,8 +34,18 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   }
 
   @override
+  void deactivate() {
+    if (mounted) {
+      ref.invalidate(searchProductsCountProvider);
+      ref.invalidate(paginatedSearchProductsProvider);
+      ref.invalidate(searchQueryProvider);
+    }
+    super.deactivate();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final searchProductsAsync = ref.watch(searchProductsNotifierProvider);
+    final searchProductsCountAsync = ref.watch(searchProductsCountProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -56,19 +68,17 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               onTapOutside: (_) => FocusScope.of(context).unfocus(),
               autofocus: true,
               textInputAction: TextInputAction.search,
-              onSubmitted: (value) {
-                if (value.trim().isNotEmpty) {
-                  ref.read(searchProductsNotifierProvider.notifier).search(value.trim());
-                } else {
-                  ref.read(searchProductsNotifierProvider.notifier).clear();
-                }
-              },
+              onSubmitted: (value) => ref.read(searchQueryProvider.notifier).state = value.trim(),
             ),
           ),
         ),
       ),
-      body: searchProductsAsync.when(
-        data: (value) {
+      body: searchProductsCountAsync.when(
+        loading: () => const Padding(padding: EdgeInsets.symmetric(vertical: 24), child: GridLoadingWidget()),
+        error: (error, _) {
+          return GenericError(exception: error, onRetry: () => ref.invalidate(paginatedSearchProductsProvider));
+        },
+        data: (int count) {
           if (searchQueryController.text.isEmpty) {
             return Center(
               child: Column(
@@ -86,7 +96,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               ),
             );
           }
-          if (value.items.isEmpty && searchQueryController.text.isNotEmpty) {
+          if (count == 0 && searchQueryController.text.isNotEmpty) {
             return Center(
               child: Text(
                 'No results found for "${searchQueryController.text}"',
@@ -102,26 +112,19 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               crossAxisSpacing: 16,
               mainAxisSpacing: 16,
             ),
-            itemCount: value.items.length,
+            itemCount: count,
             itemBuilder: (BuildContext context, int index) {
-              return ProductWidget(
-                product: value.items[index],
-                onTap: () => context.push('/item', extra: value.items[index]),
+              final currentProductAsync = ref
+                  .watch(paginatedSearchProductsProvider(index ~/ ApiConstants.pageSize))
+                  .whenData((pageData) => pageData.items[index % ApiConstants.pageSize]);
+              return currentProductAsync.when(
+                data: (product) => ProductWidget(product: product, onTap: () => context.push('/item', extra: product)),
+                loading: () => const ProductLoadingWidget(),
+                error: (_, __) => const Icon(Icons.error),
               );
             },
           );
         },
-        error: (error, _) {
-          return GenericError(
-            exception: error,
-            onRetry: () {
-              if (searchQueryController.text.trim().isNotEmpty) {
-                ref.read(searchProductsNotifierProvider.notifier).search(searchQueryController.text.trim());
-              }
-            },
-          );
-        },
-        loading: () => const Padding(padding: EdgeInsets.symmetric(vertical: 24), child: GridLoadingWidget()),
       ),
     );
   }
