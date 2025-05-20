@@ -79,18 +79,43 @@ class CatalogScreen extends ConsumerWidget {
                                 bottom: 0,
                                 left: 0,
                                 right: 0,
-                                child: Container(
-                                  padding: const EdgeInsets.all(16),
-                                  decoration: BoxDecoration(
-                                    color: Theme.of(context).colorScheme.onSurface.withAlpha(128),
-                                  ),
-                                  child: Text(
-                                    _removeHrefTags(catalog.longDescription),
-                                    maxLines: 10,
-                                    overflow: TextOverflow.fade,
-                                    style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                                      color: Theme.of(context).colorScheme.surface,
-                                      letterSpacing: 0.25,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    showModalBottomSheet(
+                                      context: context,
+                                      builder: (context) {
+                                        return Container(
+                                          padding: const EdgeInsets.all(16),
+                                          decoration: BoxDecoration(
+                                            color: Theme.of(context).colorScheme.surface,
+                                            borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+                                          ),
+                                          child: SingleChildScrollView(
+                                            child: Text(
+                                              _removeHrefTags(catalog.longDescription),
+                                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                                color: Theme.of(context).colorScheme.onSurface,
+                                                letterSpacing: 0.25,
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.all(16),
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context).colorScheme.onSurface.withAlpha(128),
+                                    ),
+                                    child: Text(
+                                      _removeHrefTags(catalog.longDescription),
+                                      maxLines: 6,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                                        color: Theme.of(context).colorScheme.surface,
+                                        letterSpacing: 0.25,
+                                      ),
                                     ),
                                   ),
                                 ),
