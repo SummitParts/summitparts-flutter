@@ -49,99 +49,99 @@ class CatalogScreen extends ConsumerWidget {
                   catalog.bannerImageUrl == null || catalog.bannerImageUrl!.isEmpty
                       ? null
                       : FlexibleSpaceBar(
-                        stretchModes: const [StretchMode.zoomBackground, StretchMode.blurBackground],
-                        background: Stack(
-                          fit: StackFit.expand,
-                          children: [
-                            CachedNetworkImage(
-                              imageUrl: catalog.bannerImageUrl!,
-                              fit: BoxFit.cover,
-                              placeholder: (context, _) {
-                                return Shimmer.fromColors(
-                                  baseColor: Theme.of(context).colorScheme.outlineVariant,
-                                  highlightColor: Theme.of(context).colorScheme.surfaceBright,
-                                  child: Container(color: Theme.of(context).colorScheme.outlineVariant),
-                                );
-                              },
-                              errorWidget: (context, url, error) {
-                                return Container(
-                                  color: Theme.of(context).colorScheme.outlineVariant,
-                                  child: Icon(
-                                    Icons.image_not_supported,
-                                    size: 80,
-                                    color: Theme.of(context).colorScheme.outline,
-                                  ),
-                                );
-                              },
-                            ),
-                            if (catalog.longDescription.isNotEmpty)
-                              Positioned(
-                                bottom: 0,
-                                left: 0,
-                                right: 0,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    showModalBottomSheet(
-                                      context: context,
-                                      builder: (context) {
-                                        return Container(
-                                          padding: const EdgeInsets.all(16),
-                                          decoration: BoxDecoration(
-                                            color: Theme.of(context).colorScheme.surface,
-                                            borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-                                          ),
-                                          child: SingleChildScrollView(
-                                            child: Text(
-                                              _removeHrefTags(catalog.longDescription),
-                                              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                                color: Theme.of(context).colorScheme.onSurface,
-                                                letterSpacing: 0.25,
+                          stretchModes: const [StretchMode.zoomBackground, StretchMode.blurBackground],
+                          background: Stack(
+                            fit: StackFit.expand,
+                            children: [
+                              CachedNetworkImage(
+                                imageUrl: catalog.bannerImageUrl!,
+                                fit: BoxFit.cover,
+                                placeholder: (context, _) {
+                                  return Shimmer.fromColors(
+                                    baseColor: Theme.of(context).colorScheme.outlineVariant,
+                                    highlightColor: Theme.of(context).colorScheme.surfaceBright,
+                                    child: Container(color: Theme.of(context).colorScheme.outlineVariant),
+                                  );
+                                },
+                                errorWidget: (context, url, error) {
+                                  return Container(
+                                    color: Theme.of(context).colorScheme.outlineVariant,
+                                    child: Icon(
+                                      Icons.image_not_supported,
+                                      size: 80,
+                                      color: Theme.of(context).colorScheme.outline,
+                                    ),
+                                  );
+                                },
+                              ),
+                              if (catalog.longDescription.isNotEmpty)
+                                Positioned(
+                                  bottom: 0,
+                                  left: 0,
+                                  right: 0,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      showModalBottomSheet(
+                                        context: context,
+                                        builder: (context) {
+                                          return Container(
+                                            padding: const EdgeInsets.all(16),
+                                            decoration: BoxDecoration(
+                                              color: Theme.of(context).colorScheme.surface,
+                                              borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+                                            ),
+                                            child: SingleChildScrollView(
+                                              child: Text(
+                                                _removeHrefTags(catalog.longDescription),
+                                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                                  color: Theme.of(context).colorScheme.onSurface,
+                                                  letterSpacing: 0.25,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
-                                  child: Container(
-                                    padding: const EdgeInsets.all(16),
-                                    decoration: BoxDecoration(
-                                      color: Theme.of(context).colorScheme.onSurface.withAlpha(128),
-                                    ),
-                                    child: Text(
-                                      _removeHrefTags(catalog.longDescription),
-                                      maxLines: 6,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                                        color: Theme.of(context).colorScheme.surface,
-                                        letterSpacing: 0.25,
+                                          );
+                                        },
+                                      );
+                                    },
+                                    child: Container(
+                                      padding: const EdgeInsets.all(16),
+                                      decoration: BoxDecoration(
+                                        color: Theme.of(context).colorScheme.onSurface.withAlpha(128),
+                                      ),
+                                      child: Text(
+                                        _removeHrefTags(catalog.longDescription),
+                                        maxLines: 6,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                                          color: Theme.of(context).colorScheme.surface,
+                                          letterSpacing: 0.25,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            Positioned(
-                              top: 0,
-                              left: 0,
-                              right: 0,
-                              height: 80 + MediaQuery.paddingOf(context).top,
-                              child: DecoratedBox(
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Theme.of(context).colorScheme.onSurface.withAlpha(200),
-                                      Theme.of(context).colorScheme.onSurface.withAlpha(120),
-                                      Colors.transparent,
-                                    ],
+                              Positioned(
+                                top: 0,
+                                left: 0,
+                                right: 0,
+                                height: 80 + MediaQuery.paddingOf(context).top,
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Theme.of(context).colorScheme.onSurface.withAlpha(200),
+                                        Theme.of(context).colorScheme.onSurface.withAlpha(120),
+                                        Colors.transparent,
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
                 _ => Container(
                   color: Theme.of(context).colorScheme.surface,
                   child: Shimmer.fromColors(
@@ -184,9 +184,10 @@ class CatalogScreen extends ConsumerWidget {
                                 ApiConstants.pageSize];
                           });
                       return currentProductAsync.when(
-                        data:
-                            (product) =>
-                                ProductWidget(product: product, onTap: () => context.push('/item', extra: product)),
+                        data: (product) => ProductWidget(
+                          product: product,
+                          onTap: () => context.push('/item', extra: product),
+                        ),
                         loading: () => const ProductLoadingWidget(),
                         error: (_, _) => const GenericError(),
                       );

@@ -17,7 +17,10 @@ final router = GoRouter(
           path: CatalogScreen.path,
           builder: (context, state) => CatalogScreen(id: state.pathParameters['id'] as String),
         ),
-        GoRoute(path: ProductScreen.path, builder: (context, state) => ProductScreen(product: state.extra as Product)),
+        GoRoute(
+          path: ProductScreen.path,
+          builder: (context, state) => ProductScreen(product: state.extra as Product),
+        ),
         GoRoute(
           path: SearchScreen.path,
           pageBuilder: (context, state) {

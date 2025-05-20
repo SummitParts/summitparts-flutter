@@ -6,7 +6,11 @@ import 'package:summit_parts/features/home/ui/screen/home_screen.dart';
 
 enum FeatureTab {
   dashboard(label: 'Home', icon: FontAwesomeIcons.house, screen: HomeScreen()),
-  specials(label: 'Specials', icon: FontAwesomeIcons.tags, screen: CatalogScreen(id: 'specials')),
+  specials(
+    label: 'Specials',
+    icon: FontAwesomeIcons.tags,
+    screen: CatalogScreen(id: 'specials'),
+  ),
   account(label: 'Account', icon: FontAwesomeIcons.userLarge, screen: UserScreen());
 
   const FeatureTab({required this.label, required this.icon, required this.screen});

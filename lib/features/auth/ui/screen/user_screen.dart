@@ -16,28 +16,28 @@ class UserScreen extends ConsumerWidget {
         return user == null
             ? const AuthScreen()
             : Scaffold(
-              appBar: AppBar(title: const Text('Account')),
-              body: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text('userKey: ${user.userKey}'),
-                    Text('userId: ${user.userId}'),
-                    Text('customerId: ${user.customerId}'),
-                    Text('customerNo: ${user.customerNo}'),
-                    Text('arDivisionNo: ${user.arDivisionNo}'),
-                    Text('customerKey: ${user.customerKey}'),
-                    Text('fullName: ${user.fullName}'),
-                    TextButton(
-                      onPressed: () => ref.read(authNotifierProvider.notifier).signOut(),
-                      child: const Text('Logout'),
-                    ),
-                  ],
+                appBar: AppBar(title: const Text('Account')),
+                body: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text('userKey: ${user.userKey}'),
+                      Text('userId: ${user.userId}'),
+                      Text('customerId: ${user.customerId}'),
+                      Text('customerNo: ${user.customerNo}'),
+                      Text('arDivisionNo: ${user.arDivisionNo}'),
+                      Text('customerKey: ${user.customerKey}'),
+                      Text('fullName: ${user.fullName}'),
+                      TextButton(
+                        onPressed: () => ref.read(authNotifierProvider.notifier).signOut(),
+                        child: const Text('Logout'),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            );
+              );
       },
       error: (error, _) {
         return GenericError(

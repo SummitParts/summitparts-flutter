@@ -106,13 +106,9 @@ class HomeScreen extends ConsumerWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Row(
                         spacing: 16,
-                        children:
-                            parts
-                                .map(
-                                  (part) =>
-                                      CategoryWidget(category: part, onTap: () => context.push('/catalog/${part.id}')),
-                                )
-                                .toList(),
+                        children: parts.map((part) {
+                          return CategoryWidget(category: part, onTap: () => context.push('/catalog/${part.id}'));
+                        }).toList(),
                       ),
                     );
                   },
@@ -150,15 +146,9 @@ class HomeScreen extends ConsumerWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Row(
                         spacing: 16,
-                        children:
-                            brands
-                                .map(
-                                  (brand) => CategoryWidget(
-                                    category: brand,
-                                    onTap: () => context.push('/catalog/${brand.id}'),
-                                  ),
-                                )
-                                .toList(),
+                        children: brands.map((brand) {
+                          return CategoryWidget(category: brand, onTap: () => context.push('/catalog/${brand.id}'));
+                        }).toList(),
                       ),
                     );
                   },

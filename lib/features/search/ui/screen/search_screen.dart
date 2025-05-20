@@ -95,7 +95,10 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                   .watch(paginatedSearchProductsProvider(index ~/ ApiConstants.pageSize))
                   .whenData((pageData) => pageData.items[index % ApiConstants.pageSize]);
               return currentProductAsync.when(
-                data: (product) => ProductWidget(product: product, onTap: () => context.push('/item', extra: product)),
+                data: (product) => ProductWidget(
+                  product: product,
+                  onTap: () => context.push('/item', extra: product),
+                ),
                 loading: () => const ProductLoadingWidget(),
                 error: (_, _) => const GenericError(),
               );
