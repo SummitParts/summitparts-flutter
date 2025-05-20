@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:summit_parts/core/constants/api_constants.dart';
 import 'package:summit_parts/core/ui/widget/generic_error.dart';
 import 'package:summit_parts/core/ui/widget/loading/grid_loading_widget.dart';
+import 'package:summit_parts/core/ui/widget/loading/product_loading_widget.dart';
 import 'package:summit_parts/features/catalog/logic/catalog_provider.dart';
 import 'package:summit_parts/features/catalog/ui/widget/category_widget.dart';
 import 'package:summit_parts/features/catalog/ui/widget/product_widget.dart';
@@ -18,18 +20,19 @@ class CatalogScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final catalogAsync = ref.watch(catalogProvider(id));
+    final firstPageCatalogProviderAsync = ref.watch(paginatedCatalogProvider((id: id, pageIndex: 0)));
     return Scaffold(
       body: RefreshIndicator(
         displacement: 80,
         onRefresh: () async {
-          if (catalogAsync.isLoading) return;
-          return ref.refresh(catalogProvider(id).future);
+          if (firstPageCatalogProviderAsync.isLoading) return;
+          ref.invalidate(paginatedCatalogProvider);
+          return ref.refresh(paginatedCatalogProvider((id: id, pageIndex: 0)).future);
         },
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
-              expandedHeight: switch (catalogAsync) {
+              expandedHeight: switch (firstPageCatalogProviderAsync) {
                 AsyncData(value: final catalog) =>
                   catalog.bannerImageUrl == null ? 0 : MediaQuery.sizeOf(context).height / 3,
                 _ => MediaQuery.sizeOf(context).height / 3,
@@ -37,11 +40,11 @@ class CatalogScreen extends ConsumerWidget {
               pinned: true,
               stretch: true,
               shadowColor: Colors.black26,
-              title: switch (catalogAsync) {
+              title: switch (firstPageCatalogProviderAsync) {
                 AsyncData(value: final catalog) => Text(catalog.description),
                 _ => null,
               },
-              flexibleSpace: switch (catalogAsync) {
+              flexibleSpace: switch (firstPageCatalogProviderAsync) {
                 AsyncData(value: final catalog) =>
                   catalog.bannerImageUrl == null || catalog.bannerImageUrl!.isEmpty
                       ? null
@@ -131,7 +134,7 @@ class CatalogScreen extends ConsumerWidget {
             ),
             SliverPadding(
               padding: const EdgeInsets.all(16),
-              sliver: switch (catalogAsync) {
+              sliver: switch (firstPageCatalogProviderAsync) {
                 AsyncData(value: final catalog) => SliverGrid(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
@@ -144,13 +147,32 @@ class CatalogScreen extends ConsumerWidget {
                       final category = catalog.categories[index];
                       return CategoryWidget(category: category, onTap: () => context.push('/catalog/${category.id}'));
                     } else {
-                      final product = catalog.products.items[index - catalog.categories.length];
-                      return ProductWidget(product: product, onTap: () => context.push('/item', extra: product));
+                      final currentProductAsync = ref
+                          .watch(
+                            paginatedCatalogProvider((
+                              id: id,
+                              pageIndex: (index - catalog.categories.length) ~/ ApiConstants.pageSize,
+                            )),
+                          )
+                          .whenData((catalogPage) {
+                            return catalogPage.products.items[(index - catalog.categories.length) %
+                                ApiConstants.pageSize];
+                          });
+                      return currentProductAsync.when(
+                        data:
+                            (product) =>
+                                ProductWidget(product: product, onTap: () => context.push('/item', extra: product)),
+                        loading: () => const ProductLoadingWidget(),
+                        error: (_, _) => const GenericError(),
+                      );
                     }
-                  }, childCount: catalog.categories.length + catalog.products.items.length),
+                  }, childCount: catalog.categories.length + catalog.products.meta.totalItems),
                 ),
                 AsyncError(:final error, :final isLoading) when !isLoading => SliverToBoxAdapter(
-                  child: GenericError(exception: error, onRetry: () => ref.invalidate(catalogProvider(id))),
+                  child: GenericError(
+                    exception: error,
+                    onRetry: () => ref.invalidate(paginatedCatalogProvider((id: id, pageIndex: 0))),
+                  ),
                 ),
                 _ => const SliverToBoxAdapter(child: GridLoadingWidget()),
               },
