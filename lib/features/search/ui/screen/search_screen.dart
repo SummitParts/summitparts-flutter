@@ -6,6 +6,7 @@ import 'package:summit_parts/core/constants/api_constants.dart';
 import 'package:summit_parts/core/ui/widget/generic_error.dart';
 import 'package:summit_parts/core/ui/widget/loading/grid_loading_widget.dart';
 import 'package:summit_parts/core/ui/widget/loading/product_loading_widget.dart';
+import 'package:summit_parts/features/catalog/model/products.dart';
 import 'package:summit_parts/features/catalog/ui/widget/product_widget.dart';
 import 'package:summit_parts/features/search/logic/search_provider.dart';
 
@@ -22,7 +23,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     final searchQuery = ref.watch(searchQueryProvider);
-    final searchProductsCountAsync = ref.watch(searchProductsCountProvider);
+    final searchProductsCountAsync = ref.watch(paginatedSearchProductsProvider(0));
 
     return Scaffold(
       appBar: AppBar(
@@ -54,7 +55,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
         error: (error, _) {
           return GenericError(exception: error, onRetry: () => ref.invalidate(paginatedSearchProductsProvider));
         },
-        data: (int count) {
+        data: (Products products) {
           if (searchQuery.isEmpty) {
             return Center(
               child: Column(
@@ -72,7 +73,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               ),
             );
           }
-          if (count == 0 && searchQuery.isNotEmpty) {
+          if (products.meta.totalItems == 0 && searchQuery.isNotEmpty) {
             return Center(
               child: Text(
                 'No results found for "$searchQuery"',
@@ -88,7 +89,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
               crossAxisSpacing: 16,
               mainAxisSpacing: 16,
             ),
-            itemCount: count,
+            itemCount: products.meta.totalItems,
             itemBuilder: (BuildContext context, int index) {
               final currentProductAsync = ref
                   .watch(paginatedSearchProductsProvider(index ~/ ApiConstants.pageSize))

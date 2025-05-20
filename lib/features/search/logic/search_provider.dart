@@ -11,7 +11,3 @@ final paginatedSearchProductsProvider = FutureProvider.autoDispose.family<Produc
   }
   return ref.read(searchDataProvider).search(searchQuery, page: pageIndex + 1);
 });
-
-final searchProductsCountProvider = Provider.autoDispose<AsyncValue<int>>((ref) {
-  return ref.watch(paginatedSearchProductsProvider(0)).whenData((products) => products.meta.totalItems);
-});
