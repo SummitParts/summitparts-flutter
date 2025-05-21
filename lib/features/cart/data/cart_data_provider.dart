@@ -17,12 +17,12 @@ class CartDataProvider {
     return (response.data as List).map((item) => CartItem.fromJson(item)).toList();
   }
 
-  Future<dynamic> addToCart(String productId) async {
+  Future<CartItem> addToCart(String productId) async {
     final response = await _dio.post(
       '/cart',
       data: {'comment': 'string', 'itemID': 'string', 'quantity': 0, 'unitOfMeasure': 'string', 'unitPrice': 0},
     );
-    return response.data;
+    return CartItem.fromJson(response.data);
   }
 
   Future<CartItem> updateItemInCart(String cartDetailKey) async {
