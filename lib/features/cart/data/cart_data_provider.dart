@@ -25,13 +25,12 @@ class CartDataProvider {
     return response.data;
   }
 
-  Future<dynamic> updateItemInCart(String cartDetailKey) async {
+  Future<CartItem> updateItemInCart(String cartDetailKey) async {
     final response = await _dio.patch('/cart/$cartDetailKey', data: {'quantity': 0});
-    return response.data;
+    return CartItem.fromJson(response.data);
   }
 
-  Future<dynamic> removeFromCart(String cartDetailKey) async {
-    final response = await _dio.delete('/cart/$cartDetailKey');
-    return response.data;
+  Future<void> removeFromCart(String cartDetailKey) async {
+    await _dio.delete('/cart/$cartDetailKey');
   }
 }
