@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:summit_parts/core/data/http/dio_provider.dart';
+import 'package:summit_parts/features/cart/model/cart_item.dart';
 
 final cartDataProvider = Provider.autoDispose<CartDataProvider>((ref) {
   return CartDataProvider(ref.read(dioProvider));
@@ -11,9 +12,9 @@ class CartDataProvider {
 
   final Dio _dio;
 
-  Future<dynamic> getCart() async {
+  Future<List<CartItem>> getCart() async {
     final response = await _dio.get('/cart');
-    return response.data;
+    return (response.data as List).map((item) => CartItem.fromJson(item)).toList();
   }
 
   Future<dynamic> addToCart(String productId) async {
