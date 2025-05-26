@@ -7,10 +7,9 @@ part of 'products.dart';
 // **************************************************************************
 
 Products _$ProductsFromJson(Map<String, dynamic> json) => Products(
-  items:
-      (json['items'] as List<dynamic>)
-          .map((e) => Product.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  items: (json['items'] as List<dynamic>)
+      .map((e) => Product.fromJson(e as Map<String, dynamic>))
+      .toList(),
   meta: PaginationMeta.fromJson(json['meta'] as Map<String, dynamic>),
 );
 

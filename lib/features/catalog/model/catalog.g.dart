@@ -11,9 +11,8 @@ Catalog _$CatalogFromJson(Map<String, dynamic> json) => Catalog(
   description: json['description'] as String,
   longDescription: json['longDescription'] as String,
   bannerImageUrl: _parseBannerImageUrl(json['banner'] as String),
-  categories:
-      (json['categories'] as List<dynamic>)
-          .map((e) => Category.fromJson(e as Map<String, dynamic>))
-          .toList(),
+  categories: (json['categories'] as List<dynamic>)
+      .map((e) => Category.fromJson(e as Map<String, dynamic>))
+      .toList(),
   products: Products.fromJson(json['products'] as Map<String, dynamic>),
 );
