@@ -56,7 +56,7 @@ dev_dependencies:
   flutter_lints: ^5.0.0
 
   # Task Runner
-  melos: ^7.0.0-dev.8
+  melos: ^7.0.0-dev.9
 
 flutter:
   uses-material-design: true
