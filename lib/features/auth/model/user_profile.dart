@@ -16,7 +16,9 @@ class UserProfile extends Equatable {
   });
 
   final int userKey;
+  @JsonKey(name: 'userID')
   final String userId;
+  @JsonKey(name: 'customerID')
   final String customerId;
   final String customerNo;
   final String arDivisionNo;
