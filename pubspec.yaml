@@ -2,7 +2,7 @@ name: summit_parts
 description: 'Summit Parts Mobile Application'
 publish_to: 'none'
 
-version: 0.0.2+6
+version: 0.0.3+7
 
 environment:
   sdk: ^3.8.0
