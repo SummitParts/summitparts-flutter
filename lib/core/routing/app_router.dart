@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:summit_parts/features/cart/ui/screen/cart_screen.dart';
 import 'package:summit_parts/features/catalog/model/product.dart';
 import 'package:summit_parts/features/catalog/ui/screen/catalog_screen.dart';
 import 'package:summit_parts/features/catalog/ui/screen/product_screen.dart';
@@ -26,6 +27,23 @@ final router = GoRouter(
           pageBuilder: (context, state) {
             return CustomTransitionPage(
               child: const SearchScreen(),
+              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                return const FadeUpwardsPageTransitionsBuilder().buildTransitions(
+                  null,
+                  context,
+                  animation,
+                  secondaryAnimation,
+                  child,
+                );
+              },
+            );
+          },
+        ),
+        GoRoute(
+          path: CartScreen.path,
+          pageBuilder: (context, state) {
+            return CustomTransitionPage(
+              child: const CartScreen(),
               transitionsBuilder: (context, animation, secondaryAnimation, child) {
                 return const FadeUpwardsPageTransitionsBuilder().buildTransitions(
                   null,
