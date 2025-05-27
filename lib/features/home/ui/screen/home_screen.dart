@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:summit_parts/core/ui/widget/generic_error.dart';
 import 'package:summit_parts/core/ui/widget/loading/horizontal_list_loading_widget.dart';
+import 'package:summit_parts/features/cart/ui/screen/cart_screen.dart';
 import 'package:summit_parts/features/catalog/ui/widget/category_widget.dart';
 import 'package:summit_parts/features/home/logic/featured_categories_provider.dart';
 import 'package:summit_parts/features/home/ui/widget/see_all_button.dart';
@@ -27,7 +28,7 @@ class HomeScreen extends ConsumerWidget {
             style: IconButton.styleFrom(backgroundColor: Theme.of(context).colorScheme.surfaceBright, iconSize: 20),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () => context.push(CartScreen.path),
             icon: const Icon(FontAwesomeIcons.cartShopping),
             style: IconButton.styleFrom(backgroundColor: Theme.of(context).colorScheme.surfaceBright, iconSize: 20),
           ),
