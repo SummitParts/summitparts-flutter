@@ -35,6 +35,7 @@ class ProductScreen extends StatelessWidget {
                     ),
                   );
                 },
+                tooltip: 'Share',
                 icon: const Icon(FontAwesomeIcons.share),
               ),
             ],
