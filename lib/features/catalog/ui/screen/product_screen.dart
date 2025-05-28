@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:summit_parts/core/constants/html_constants.dart';
 import 'package:summit_parts/core/ui/widget/html_widget_with_url_launcher.dart';
 import 'package:summit_parts/features/catalog/model/product.dart';
@@ -23,6 +25,19 @@ class ProductScreen extends StatelessWidget {
             expandedHeight: max(MediaQuery.sizeOf(context).height / 4, 232),
             pinned: true,
             stretch: true,
+            actions: [
+              IconButton(
+                onPressed: () {
+                  SharePlus.instance.share(
+                    ShareParams(
+                      text:
+                          'Checkout this "${product.name}" for ${product.productLine}\nhttps://www.summitparts.com/item/${product.id}',
+                    ),
+                  );
+                },
+                icon: const Icon(FontAwesomeIcons.share),
+              ),
+            ],
             flexibleSpace: FlexibleSpaceBar(
               background: GestureDetector(
                 onTap: () {
