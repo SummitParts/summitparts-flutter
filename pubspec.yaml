@@ -42,6 +42,9 @@ dependencies:
   # JSON Serialization
   json_annotation: ^4.9.0
 
+  # Utilities
+  share_plus: ^11.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
