@@ -27,6 +27,7 @@ class HomeNavigationScreen extends ConsumerWidget {
             }).toList(),
           ),
           bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
             currentIndex: currentScreen.index,
             onTap: (index) => ref.read(currentScreenProvider.notifier).state = FeatureTab.values[index],
             items: FeatureTab.values
