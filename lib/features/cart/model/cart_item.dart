@@ -12,26 +12,25 @@ class CartItem extends Equatable {
     required this.quantity,
     required this.id,
     required this.name,
-    // required this.longDescription,
+    required this.longDescription,
     required this.imageUrl,
     required this.price,
-    // required this.productLine,
+    required this.productLine,
   });
 
   final int cartDetailKey;
   final int cartKey;
+  @JsonKey(name: 'itemID')
   final String itemId;
-  final String quantity;
+  final int quantity;
   final String id;
   @JsonKey(name: 'description')
   final String name;
-
-  // final String longDescription;
+  final String longDescription;
   @JsonKey(name: 'image', fromJson: _parseImageUrl)
   final String imageUrl;
   final double price;
-
-  // final String? productLine;
+  final String? productLine;
 
   factory CartItem.fromJson(Map<String, dynamic> json) => _$CartItemFromJson(json);
 
@@ -39,10 +38,10 @@ class CartItem extends Equatable {
   List<Object?> get props => [
     id,
     name,
-    // longDescription,
+    longDescription,
     imageUrl,
     price,
-    // productLine,
+    productLine,
     cartDetailKey,
     cartKey,
     itemId,
