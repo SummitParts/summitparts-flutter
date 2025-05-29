@@ -12,6 +12,7 @@ import 'package:summit_parts/features/cart/ui/screen/cart_screen.dart';
 import 'package:summit_parts/features/catalog/logic/catalog_provider.dart';
 import 'package:summit_parts/features/catalog/ui/widget/category_widget.dart';
 import 'package:summit_parts/features/catalog/ui/widget/product_widget.dart';
+import 'package:summit_parts/features/catalog/ui/widget/read_more_text.dart';
 import 'package:summit_parts/features/search/ui/screen/search_screen.dart';
 
 class CatalogScreen extends ConsumerWidget {
@@ -126,12 +127,11 @@ class CatalogScreen extends ConsumerWidget {
                                     child: Container(
                                       padding: const EdgeInsets.all(16),
                                       decoration: BoxDecoration(
-                                        color: Theme.of(context).colorScheme.onSurface.withAlpha(128),
+                                        color: Theme.of(context).colorScheme.onSurface.withAlpha(178),
                                       ),
-                                      child: Text(
+                                      child: ReadMoreText(
                                         _removeHrefTags(catalog.longDescription),
                                         maxLines: 6,
-                                        overflow: TextOverflow.ellipsis,
                                         style: Theme.of(context).textTheme.labelLarge?.copyWith(
                                           color: Theme.of(context).colorScheme.surface,
                                           letterSpacing: 0.25,
