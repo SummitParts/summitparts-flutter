@@ -109,11 +109,13 @@ class CatalogScreen extends ConsumerWidget {
                                               borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
                                             ),
                                             child: SingleChildScrollView(
-                                              child: Text(
-                                                _removeHrefTags(catalog.longDescription),
-                                                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                                  color: Theme.of(context).colorScheme.onSurface,
-                                                  letterSpacing: 0.25,
+                                              child: SafeArea(
+                                                child: Text(
+                                                  _removeHrefTags(catalog.longDescription),
+                                                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                                    color: Theme.of(context).colorScheme.onSurface,
+                                                    letterSpacing: 0.25,
+                                                  ),
                                                 ),
                                               ),
                                             ),
