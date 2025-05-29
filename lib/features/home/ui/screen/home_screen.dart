@@ -26,11 +26,13 @@ class HomeScreen extends ConsumerWidget {
             onPressed: () => context.push(SearchScreen.path),
             icon: const Icon(FontAwesomeIcons.magnifyingGlass),
             style: IconButton.styleFrom(backgroundColor: Theme.of(context).colorScheme.surfaceBright, iconSize: 20),
+            tooltip: 'Search',
           ),
           IconButton(
             onPressed: () => context.push(CartScreen.path),
             icon: const Icon(FontAwesomeIcons.cartShopping),
             style: IconButton.styleFrom(backgroundColor: Theme.of(context).colorScheme.surfaceBright, iconSize: 20),
+            tooltip: 'Cart',
           ),
           const SizedBox(width: 4),
         ],
