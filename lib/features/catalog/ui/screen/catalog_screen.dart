@@ -1,15 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart' show FontAwesomeIcons;
 import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:summit_parts/core/constants/api_constants.dart';
 import 'package:summit_parts/core/ui/widget/generic_error.dart';
 import 'package:summit_parts/core/ui/widget/loading/grid_loading_widget.dart';
 import 'package:summit_parts/core/ui/widget/loading/product_loading_widget.dart';
+import 'package:summit_parts/features/cart/ui/screen/cart_screen.dart';
 import 'package:summit_parts/features/catalog/logic/catalog_provider.dart';
 import 'package:summit_parts/features/catalog/ui/widget/category_widget.dart';
 import 'package:summit_parts/features/catalog/ui/widget/product_widget.dart';
+import 'package:summit_parts/features/search/ui/screen/search_screen.dart';
 
 class CatalogScreen extends ConsumerWidget {
   const CatalogScreen({super.key, required this.id});
@@ -44,6 +47,21 @@ class CatalogScreen extends ConsumerWidget {
                 AsyncData(value: final catalog) => Text(catalog.description),
                 _ => null,
               },
+              actions: [
+                IconButton(
+                  onPressed: () => context.push(SearchScreen.path),
+                  icon: const Icon(FontAwesomeIcons.magnifyingGlass),
+                  style: IconButton.styleFrom(iconSize: 20),
+                  tooltip: 'Search',
+                ),
+                IconButton(
+                  onPressed: () => context.push(CartScreen.path),
+                  icon: const Icon(FontAwesomeIcons.cartShopping),
+                  style: IconButton.styleFrom(iconSize: 20),
+                  tooltip: 'Cart',
+                ),
+                const SizedBox(width: 4),
+              ],
               flexibleSpace: switch (firstPageCatalogProviderAsync) {
                 AsyncData(value: final catalog) =>
                   catalog.bannerImageUrl == null || catalog.bannerImageUrl!.isEmpty
