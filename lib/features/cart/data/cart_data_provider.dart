@@ -12,17 +12,24 @@ class CartDataProvider {
 
   final Dio _dio;
 
-  Future<List<CartItem>> getCart() async {
-    final response = await _dio.get('/cart');
+  Future<String> getCartIdOrCreateOne() async {
+    final response = await _dio.post('/cart');
+    return response.data['cartID'];
+  }
+
+  Future<List<CartItem>> getCart(String cartId) async {
+    final response = await _dio.get('/cart/$cartId');
     return (response.data as List).map((item) => CartItem.fromJson(item)).toList();
   }
 
-  Future<CartItem> addToCart(String productId, int quantity) async {
-    final response = await _dio.post(
-      '/cart',
-      data: {'itemID': productId, 'quantity': quantity, 'unitOfMeasure': 'EA', 'unitPrice': 0},
+  Future<List<CartItem>> addToCart(String cartId, String productId, int quantity) async {
+    final response = await _dio.put(
+      '/cart/$cartId',
+      data: [
+        {'itemID': productId, 'quantity': quantity},
+      ],
     );
-    return CartItem.fromJson(response.data);
+    return (response.data as List).map((item) => CartItem.fromJson(item)).toList();
   }
 
   Future<CartItem> updateItemInCart(int cartDetailKey) async {
