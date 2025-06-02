@@ -45,7 +45,7 @@ final removeFromCartProvider = FutureProvider.autoDispose.family<void, int>((ref
 });
 
 final updateCartItemProvider = FutureProvider.autoDispose.family<CartItem, int>((ref, cartDetailKey) async {
-  final result = await ref.read(cartDataProvider).updateItemInCart(cartDetailKey);
+  final result = await ref.read(cartDataProvider).updateItemInCart(cartDetailKey, 0);
   ref.invalidate(cartItemsProvider);
   return result;
 });

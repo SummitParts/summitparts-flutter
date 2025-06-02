@@ -32,8 +32,8 @@ class CartDataProvider {
     return (response.data as List).map((item) => CartItem.fromJson(item)).toList();
   }
 
-  Future<CartItem> updateItemInCart(int cartDetailKey) async {
-    final response = await _dio.patch('/cart/$cartDetailKey', data: {'quantity': 0});
+  Future<CartItem> updateItemInCart(int cartDetailKey, int quantity) async {
+    final response = await _dio.patch('/cart/$cartDetailKey', data: {'quantity': quantity});
     return CartItem.fromJson(response.data);
   }
 
