@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:summit_parts/features/catalog/model/product.dart';
 
 part 'cart_item.g.dart';
 
@@ -33,6 +34,15 @@ class CartItem extends Equatable {
   final String? productLine;
 
   factory CartItem.fromJson(Map<String, dynamic> json) => _$CartItemFromJson(json);
+
+  Product get product => Product(
+    id: id,
+    name: name,
+    longDescription: longDescription,
+    imageUrl: imageUrl,
+    price: price,
+    productLine: productLine,
+  );
 
   @override
   List<Object?> get props => [
